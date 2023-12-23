@@ -4,8 +4,6 @@ module decoder(clk, opcode, memtoreg, memwrite, branch, ALUsrc, regdst, regwrite
     output reg memtoreg, memwrite, branch, ALUsrc, regdst, regwrite;
     output reg [1:0] ALUop;
 
-    reg [7:0] ALUop;
-
     always @ (posedge clk) begin
         case (opcode)
             6'b000000 : begin
