@@ -3,7 +3,7 @@
 
 module main();
     reg [3:0] b;
-    wire a = 1;
+    wire a;
 
     id id1(b[0], a);
 
