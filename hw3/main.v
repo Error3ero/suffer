@@ -2,8 +2,8 @@
 
 module main();
     reg [5:0] opcode;
-    wire memtoreg, memwrite, branch, ALUsrc, regdst, regwrite;
-    wire [1:0] ALUop;
+    reg memtoreg, memwrite, branch, ALUsrc, regdst, regwrite;
+    reg [1:0] ALUop;
 
     decoder decoder1(opcode, memtoreg, memwrite, branch, ALUsrc, regdst, regwrite, ALUop);
 
