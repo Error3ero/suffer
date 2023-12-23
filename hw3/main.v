@@ -23,7 +23,7 @@ module main();
 
         //opcode = 6'b100011;
         opcode[5] = 1;
-        aopcode[4] = 0;
+        opcode[4] = 0;
         opcode[3] = 0;
         opcode[2] = 0;
         opcode[1] = 1;
