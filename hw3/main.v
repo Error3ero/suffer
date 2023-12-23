@@ -1,7 +1,7 @@
 //`include "controller.v"
 
 module main();
-    reg i;
+    reg i[1:0];
 
     initial begin
         i = 0;
@@ -10,7 +10,7 @@ module main();
         i = 3;
         $display("i = %d", i[1]);
 
-        i = 3'b0x1;
+        i = 3'bx1;
         $display("i = %d", i);
     end
 
