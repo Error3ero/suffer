@@ -3,7 +3,7 @@
 
 module main();
     wire a;
-    a = 1;
+    assign a = 1;
 
     initial $display("%d", a);
 endmodule
