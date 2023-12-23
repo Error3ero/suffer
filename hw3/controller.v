@@ -3,6 +3,9 @@ module decoder(opcode, memtoreg, memwrite, branch, ALUsrc, regdst, regwrite, ALU
     output reg memtoreg, memwrite, branch, ALUsrc, regdst, regwrite;
     output reg [1:0] ALUop;
 
+    supply0 zero;
+    supply1 one;
+
     always begin
         case (opcode)
             6'b000000 : begin
