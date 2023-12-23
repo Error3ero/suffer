@@ -6,6 +6,18 @@ module main();
     initial begin
         i = 0;
         $display("i = %d", i);
+
+        i = 1;
+        $display("i = %d", i);
+
+        i = x;
+        $display("i = %d", i);
+
+        i = z;
+        $display("i = %d", i);
+
+        i = g;
+        $display("i = %d", i);
     end
 
 
