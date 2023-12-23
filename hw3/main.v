@@ -2,18 +2,21 @@
 `include "util.v"
 
 module main();
+    wire [1:0] a;
     reg [3:0] b;
-    wire a;
 
-    id id1(b[0], a);
-
+    assign a = b[3:2];
 
     initial begin
-        b[0] = 1;
-        $display("a = %d", a);
-
+        b[3] = 1;
         b[0] = 0;
-        $display("a = %d", a);
+        b[2] = 0;
+        $display("a = %d&d", a[1], a[0]);
+
+        b[3] = 0;
+        b[0] = 1;
+        b[2] = 0;
+        $display("a = %d%d", a[1], a[0]);
     end
 
 //    reg [5:0] opcode;

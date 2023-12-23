@@ -15,9 +15,6 @@ module decoder(clk, opcode, memtoreg, memwrite, branch, ALUsrc, regdst, regwrite
     assign ALUop[1] = toOut[1];
     assign ALUop[0] = toOut[0];
 
-    supply0 zero;
-    supply1 one;
-
     always @ (posedge clk) begin
         case (opcode)
             6'b000000 : begin

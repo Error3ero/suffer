@@ -39,15 +39,3 @@ module mux2_5(d0, d1, a, out);
   output [4:0] out;
   assign out = a ? d1 : d0;
 endmodule
-
-module id (a, out);
-    input wire a;
-    output out;
-
-    supply1 pwr;
-    supply0 gnd;
-
-    // 1 - сток, 2 - исток, 3 - база
-    pmos pmos1(out, gnd, a);
-    nmos nmos1(out, pwr, a);
-endmodule
