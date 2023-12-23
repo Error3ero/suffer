@@ -2,23 +2,61 @@
 `include "util.v"
 
 module main();
-    wire a;
-    assign a = 1;
-    wire b;
-    wire [3:0] v;
+    reg [5:0] opcode;
 
-    test t(a, v);
-    assign b = v == 4'b1111;
+    wire memtoreg, memwrite, branch, ALUsrc, regdst, regwrite;
+    wire [1:0] ALUop;
 
-    initial $display("%d, %d", a, b);
-endmodule
+    reg clk;
 
-module test(a, out);
-    input a;
-    output [3:0] out;
+    decoder d(clk, opcode, memtoreg, memwrite, branch, ALUsrc, regdst, regwrite, ALUop);
 
-    assign out[3] = a;
-    assign out[1] = a;
-    assign out[2] = a;
-    assign out[0] = a;
+    initial begin
+        opcode[5] = 0;
+        opcode[4] = 0;
+        opcode[3] = 0;
+        opcode[2] = 0;
+        opcode[1] = 0;
+        opcode[0] = 0;
+        clk = 0;
+        clk = 1;
+        $display("memtoreg = %d, memwrite = %d, branch = %d, ALUsrc = %d, regdst = %d, regwrite = %d, ALUop1 = %d, ALUop0 = %d",
+        clk, opcode, memtoreg, memwrite, branch, ALUsrc, regdst, regwrite, ALUop[1], ALUop[0])
+
+        opcode[5] = 1;
+        opcode[4] = 0;
+        opcode[3] = 0;
+        opcode[2] = 0;
+        opcode[1] = 1;
+        opcode[0] = 1;
+        clk = 0;
+        clk = 1;
+        $display("memtoreg = %d, memwrite = %d, branch = %d, ALUsrc = %d, regdst = %d, regwrite = %d, ALUop1 = %d, ALUop0 = %d",
+        clk, opcode, memtoreg, memwrite, branch, ALUsrc, regdst, regwrite, ALUop[1], ALUop[0])
+
+        opcode[5] = 1;
+        opcode[4] = 0;
+        opcode[3] = 1;
+        opcode[2] = 0;
+        opcode[1] = 1;
+        opcode[0] = 1;
+        clk = 0;
+        clk = 1;
+        $display("memtoreg = %d, memwrite = %d, branch = %d, ALUsrc = %d, regdst = %d, regwrite = %d, ALUop1 = %d, ALUop0 = %d",
+        clk, opcode, memtoreg, memwrite, branch, ALUsrc, regdst, regwrite, ALUop[1], ALUop[0])
+
+        opcode[5] = 0;
+        opcode[4] = 0;
+        opcode[3] = 0;
+        opcode[2] = 1;
+        opcode[1] = 0;
+        opcode[0] = 0;
+        clk = 0;
+        clk = 1;
+        $display("memtoreg = %d, memwrite = %d, branch = %d, ALUsrc = %d, regdst = %d, regwrite = %d, ALUop1 = %d, ALUop0 = %d",
+        clk, opcode, memtoreg, memwrite, branch, ALUsrc, regdst, regwrite, ALUop[1], ALUop[0])
+
+
+
+    end
 endmodule
