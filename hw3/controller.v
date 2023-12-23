@@ -3,48 +3,51 @@ module decoder(clk, opcode, memtoreg, memwrite, branch, ALUsrc, regdst, regwrite
     input [5:0] opcode;
     output memtoreg, memwrite, branch, ALUsrc, regdst, regwrite;
     output [1:0] ALUop;
+    
+    supply0 zero;
+    supply1 one;
 
     always @ (posedge clk) begin
         case (opcode)
             6'b000000 : begin
-                memtoreg = 0;
-                memwrite = 0;
-                branch = 0;
-                ALUsrc = 0;
-                regdst = 1;
-                regwrite = 1;
-                ALUop[1] = 1;
-                ALUop[0] = 0;
+                memtoreg = zero;
+                memwrite = zero;
+                branch = zero;
+                ALUsrc = zero;
+                regdst = one;
+                regwrite = one;
+                ALUop[1] = one;
+                ALUop[0] = zero;
                 end
             6'b100011 : begin
-                memtoreg = 1;
-                memwrite = 0;
-                branch = 0;
-                ALUsrc = 1;
-                regdst = 0;
-                regwrite = 1;
-                ALUop[1] = 0;
-                ALUop[0] = 0;
+                memtoreg = one;
+                memwrite = zero;
+                branch = zero;
+                ALUsrc = one;
+                regdst = zero;
+                regwrite = one;
+                ALUop[1] = zero;
+                ALUop[0] = zero;
                 end
             6'b101011 : begin
-                memtoreg = 0;
-                memwrite = 1'bx;
-                branch = 1;
-                ALUsrc = 0;
-                regdst = 1;
-                regwrite = 1'bx;
-                ALUop[1] = 0;
-                ALUop[0] = 0;
+                memtoreg = zero;
+                //memwrite = one'bx;
+                branch = one;
+                ALUsrc = zero;
+                regdst = one;
+                //regwrite = one'bx;
+                ALUop[1] = zero;
+                ALUop[0] = zero;
                 end
             6'b000100 : begin
-                memtoreg = 0;
-                memwrite = 1'bx;
-                branch = 0;
-                ALUsrc = 1;
-                regdst = 0;
-                regwrite = 1'bx;
-                ALUop[1] = 0;
-                ALUop[0] = 1;
+                memtoreg = zero;
+                //memwrite = one'bx;
+                branch = zero;
+                ALUsrc = one;
+                regdst = zero;
+                //regwrite = one'bx;
+                ALUop[1] = zero;
+                ALUop[0] = one;
                 end
         endcase
     end
