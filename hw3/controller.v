@@ -1,8 +1,8 @@
 module decoder(clk, opcode, memtoreg, memwrite, branch, ALUsrc, regdst, regwrite, ALUop);
     input clk;
     input [5:0] opcode;
-    output reg memtoreg, memwrite, branch, ALUsrc, regdst, regwrite;
-    output reg [1:0] ALUop;
+    output memtoreg, memwrite, branch, ALUsrc, regdst, regwrite;
+    output [1:0] ALUop;
 
     always @ (posedge clk) begin
         case (opcode)
