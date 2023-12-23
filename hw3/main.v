@@ -4,7 +4,7 @@
 module main();
     reg [3:0] b;
 
-    wire [1:0] a = b[3:2];
+    wire [1:0] a;
 
 
     initial begin
