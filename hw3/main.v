@@ -4,7 +4,7 @@
 module main();
     reg [3:0] b;
 
-    wire [1:0] a;
+    wire a;
 
     supply1 one;
     supply0 zero;
@@ -12,7 +12,7 @@ module main();
 
     initial begin
         b[3] = 1;
-        assign a[0] = b[3] ? one : zero;
+        assign a = b[3] ? one : zero;
         b[0] = 0;
         b[2] = 0;
         $display("a = %d%d", a[1], a[0]);
