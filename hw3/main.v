@@ -9,10 +9,10 @@ module main();
     supply1 one;
     supply0 zero;
 
+    assign a = b[3] ? one : zero;
 
     initial begin
         b[3] = 1;
-        assign a = b[3] ? one : zero;
         b[0] = 0;
         b[2] = 0;
         $display("a = %d", a);
