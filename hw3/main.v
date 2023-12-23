@@ -1,4 +1,4 @@
-//`include "controller.v"
+`include "controller.v"
 
 module main();
     reg [5:0] opcode;
