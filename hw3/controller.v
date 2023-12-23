@@ -15,7 +15,8 @@ module decoder(opcode, memtoreg, memwrite, branch, ALUsrc, regdst, regwrite, ALU
                 ALUsrc = 0;
                 regdst = 1;
                 regwrite = 1;
-                ALUop = 2'b10;
+                ALUop[1] = 1;
+                ALUop[0] = 0;
                 end
             6'b100011 : begin
                 memtoreg = 1;
@@ -24,25 +25,28 @@ module decoder(opcode, memtoreg, memwrite, branch, ALUsrc, regdst, regwrite, ALU
                 ALUsrc = 1;
                 regdst = 0;
                 regwrite = 1;
-                ALUop = 2'b00;
+                ALUop[1] = 0;
+                ALUop[0] = 0;
                 end
             6'b101011 : begin
-                memtoreg = x;
+                memtoreg = 1'bx;
                 memwrite = 1;
                 branch = 0;
                 ALUsrc = 1;
-                regdst = x;
+                regdst = 1'bx;
                 regwrite = 0;
-                ALUop = 2'b00;
+                ALUop[1] = 0;
+                ALUop[0] = 0;
                 end
             6'b000100 : begin
-                memtoreg = x;
+                memtoreg = 1'bx;
                 memwrite = 0;
                 branch = 1;
                 ALUsrc = 0;
-                regdst = x;
+                regdst = 1'bx;
                 regwrite = 0;
-                ALUop = 2'b01;
+                ALUop[1] = 0;
+                ALUop[0] = 1;
                 end
         endcase
     end
