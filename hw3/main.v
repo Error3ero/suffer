@@ -6,7 +6,7 @@ module main();
     wire [1:0] ALUop;
     reg clk;
 
-    decoder decoder1(opcode, memtoreg, memwrite, branch, ALUsrc, regdst, regwrite, ALUop);
+    decoder decoder1(clk, opcode, memtoreg, memwrite, branch, ALUsrc, regdst, regwrite, ALUop);
 
     initial begin
         opcode = 6'b000000;
