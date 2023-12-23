@@ -7,10 +7,10 @@ module main();
         i = 0;
         $display("i = %d", i);
 
-        i = 1;
+        i = 3;
         $display("i = %d", i);
 
-        i = 1'bx;
+        i = 3'b0x1;
         $display("i = %d", i);
 
         i = 1'bz;
