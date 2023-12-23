@@ -72,5 +72,5 @@ module test(a, out);
     input [5:0] a;
     output out;
 
-    assign out = a == 6'b000000 ? 1 : 0;
+    assign out = a == 6'b000000;
 endmodule
