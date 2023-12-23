@@ -10,13 +10,10 @@ module main();
         i = 1;
         $display("i = %d", i);
 
-        i = x;
+        i = 1'bx;
         $display("i = %d", i);
 
-        i = z;
-        $display("i = %d", i);
-
-        i = g;
+        i = 1'bz;
         $display("i = %d", i);
     end
 
