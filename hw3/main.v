@@ -4,13 +4,13 @@ module main();
     reg i[1:0];
 
     initial begin
-        i = 0;
+        i = 2'b11;
         $display("i = %d", i);
 
-        i = 3;
+        i = 2'b10;
         $display("i = %d", i[1]);
 
-        i = 3'bx1;
+        i = 2'bx1;
         $display("i = %d", i);
     end
 
