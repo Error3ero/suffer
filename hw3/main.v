@@ -1,9 +1,11 @@
 `include "controller.v"
+`include "util.v"
 
 module main();
     reg [3:0] b;
     wire a = 1;
 
+    id id1(b[0], a);
 
 
     initial begin
