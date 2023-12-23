@@ -3,7 +3,8 @@
 
 module main();
     wire a;
-    ponos p(1, a);
+    supply1 o;
+    ponos p(o, a);
 
 
     initial begin
