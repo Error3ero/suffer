@@ -2,7 +2,7 @@
 
 module main();
     reg [3:0] b;
-    wire a = b[0];
+    wire a = 1;
 
 
 

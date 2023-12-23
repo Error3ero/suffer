@@ -39,3 +39,10 @@ module mux2_5(d0, d1, a, out);
   output [4:0] out;
   assign out = a ? d1 : d0;
 endmodule
+
+module id (in, out);
+    input in;
+    output out;
+
+
+endmodule
