@@ -1,16 +1,13 @@
 `include "controller.v"
 
 module main();
-    reg [1:0] a;
+    wire a;
+    supply1 one;
+
+    assign a = one;
 
     initial begin
-        a[1] = 0;
-        a[0] = 1;
-
-        case (a)
-            2'b01 : $display("01");
-            2'b10 : $display("10");
-        endcase
+        $display("a = %d", a);
     end
 
 //    reg [5:0] opcode;
