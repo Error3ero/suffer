@@ -3,19 +3,7 @@
 
 module main();
     wire a;
-    supply1 o;
-    ponos p(o, a);
+    a = 1;
 
-
-    initial begin
-        $display("%d", a);
-    end
-endmodule
-
-
-module ponos(a, out);
-    input a;
-    output out;
-
-    assign out = a ? 1 : 0;
+    initial $display("%d", a);
 endmodule
