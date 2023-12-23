@@ -1,14 +1,12 @@
 `include "controller.v"
 
 module main();
-    wire a;
     reg [3:0] b;
+    wire a = b[0];
 
 
 
     initial begin
-        a = b[0];
-
         b[0] = 1;
         $display("a = %d", a);
 
