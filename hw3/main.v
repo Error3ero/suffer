@@ -2,14 +2,19 @@
 `include "util.v"
 
 module main();
-    reg [5:0] opcode;
-    reg memtoreg, memwrite, branch, ALUsrc, regdst, regwrite;
-    reg [1:0] ALUop;
-    reg clk;
+    wire a;
+    ponos p(1, a);
 
-    decoder decoder1(clk, opcode, memtoreg, memwrite, branch, ALUsrc, regdst, regwrite, ALUop);
 
     initial begin
-
+        $display("%d", a);
     end
+endmodule
+
+
+module ponos(a, out);
+    input a;
+    output out;
+
+    assign out = a ? 1 : 0;
 endmodule
