@@ -10,14 +10,14 @@ module decoder(clk, opcode, memtoreg, memwrite, branch, ALUsrc, regdst, regwrite
     always @ (posedge clk) begin
         case (opcode)
             6'b000000 : begin
-                memtoreg = zero;
-                memwrite = zero;
-                branch = zero;
-                ALUsrc = zero;
-                regdst = one;
-                regwrite = one;
-                ALUop[1] = one;
-                ALUop[0] = zero;
+                assign memtoreg = zero;
+                assign memwrite = zero;
+                assign branch = zero;
+                assign ALUsrc = zero;
+                assign regdst = one;
+                assign regwrite = one;
+                assign ALUop[1] = one;
+                assign ALUop[0] = zero;
                 end
             6'b100011 : begin
                 memtoreg = one;
