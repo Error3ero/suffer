@@ -8,12 +8,9 @@ module main();
         $display("i = %d", i);
 
         i = 3;
-        $display("i = %d", i);
+        $display("i = %d", i[1:0]);
 
         i = 3'b0x1;
-        $display("i = %d", i);
-
-        i = 1'bz;
         $display("i = %d", i);
     end
 
