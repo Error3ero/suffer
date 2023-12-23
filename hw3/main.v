@@ -15,12 +15,12 @@ module main();
         assign a = b[3] ? one : zero;
         b[0] = 0;
         b[2] = 0;
-        $display("a = %d%d", a[1], a[0]);
+        $display("a = %d", a);
 
         b[3] = 0;
         b[0] = 1;
         b[2] = 0;
-        $display("a = %d%d", a[1], a[0]);
+        $display("a = %d", a);
     end
 
 //    reg [5:0] opcode;
