@@ -9,10 +9,10 @@ module main();
 
     initial $display("%d, %d", a, b);
 endmodule
-
-module test(a, out);
-    input a;
-    output [3:0];
-
-
-endmodule
+//
+//module test(a, out);
+//    input a;
+//    output [3:0] out;
+//
+//
+//endmodule
