@@ -9,7 +9,7 @@ module main();
 
     reg clk;
 
-    decoder d(clk, opcode, memtoreg, memwrite, branch, ALUsrc, regdst, regwrite, ALUop);
+    decoder d(opcode, memtoreg, memwrite, branch, ALUsrc, regdst, regwrite, ALUop);
 
     initial begin
         opcode[5] = 0;
@@ -20,8 +20,9 @@ module main();
         opcode[0] = 0;
         clk = 0;
         clk = 1;
-        $display("memtoreg = %d, memwrite = %d, branch = %d, ALUsrc = %d, regdst = %d, regwrite = %d, ALUop1 = %d, ALUop0 = %d",
-        clk, opcode, memtoreg, memwrite, branch, ALUsrc, regdst, regwrite, ALUop[1], ALUop[0]);
+        clk = opcode == 6'b000000;
+        $display("statement = %d", clk);
+        $display("memtoreg = %d, memwrite = %d, branch = %d, ALUsrc = %d, regdst = %d, regwrite = %d, ALUop1 = %d, ALUop0 = %d", clk, opcode, memtoreg, memwrite, branch, ALUsrc, regdst, regwrite, ALUop[1], ALUop[0]);
 
         opcode[5] = 1;
         opcode[4] = 0;
@@ -31,8 +32,9 @@ module main();
         opcode[0] = 1;
         clk = 0;
         clk = 1;
-        $display("memtoreg = %d, memwrite = %d, branch = %d, ALUsrc = %d, regdst = %d, regwrite = %d, ALUop1 = %d, ALUop0 = %d",
-        clk, opcode, memtoreg, memwrite, branch, ALUsrc, regdst, regwrite, ALUop[1], ALUop[0]);
+        clk = opcode == 6'b100011;
+        $display("statement = %d", clk);
+        $display("memtoreg = %d, memwrite = %d, branch = %d, ALUsrc = %d, regdst = %d, regwrite = %d, ALUop1 = %d, ALUop0 = %d", clk, opcode, memtoreg, memwrite, branch, ALUsrc, regdst, regwrite, ALUop[1], ALUop[0]);
 
         opcode[5] = 1;
         opcode[4] = 0;
@@ -42,8 +44,9 @@ module main();
         opcode[0] = 1;
         clk = 0;
         clk = 1;
-        $display("memtoreg = %d, memwrite = %d, branch = %d, ALUsrc = %d, regdst = %d, regwrite = %d, ALUop1 = %d, ALUop0 = %d",
-        clk, opcode, memtoreg, memwrite, branch, ALUsrc, regdst, regwrite, ALUop[1], ALUop[0]);
+        clk = opcode == 6'b101011;
+        $display("statement = %d", clk);
+        $display("memtoreg = %d, memwrite = %d, branch = %d, ALUsrc = %d, regdst = %d, regwrite = %d, ALUop1 = %d, ALUop0 = %d", clk, opcode, memtoreg, memwrite, branch, ALUsrc, regdst, regwrite, ALUop[1], ALUop[0]);
 
         opcode[5] = 0;
         opcode[4] = 0;
@@ -53,10 +56,8 @@ module main();
         opcode[0] = 0;
         clk = 0;
         clk = 1;
-        $display("memtoreg = %d, memwrite = %d, branch = %d, ALUsrc = %d, regdst = %d, regwrite = %d, ALUop1 = %d, ALUop0 = %d",
-        clk, opcode, memtoreg, memwrite, branch, ALUsrc, regdst, regwrite, ALUop[1], ALUop[0]);
-
-
-
+        clk = opcode == 6'b000100;
+        $display("statement = %d", clk);
+        $display("memtoreg = %d, memwrite = %d, branch = %d, ALUsrc = %d, regdst = %d, regwrite = %d, ALUop1 = %d, ALUop0 = %d", clk, opcode, memtoreg, memwrite, branch, ALUsrc, regdst, regwrite, ALUop[1], ALUop[0]);
     end
 endmodule
