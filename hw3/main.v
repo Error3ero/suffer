@@ -2,13 +2,12 @@
 `include "util.v"
 
 module main();
-    wire [1:0] a;
     reg [3:0] b;
 
+    wire [1:0] a = b[3:2];
 
 
     initial begin
-        a = b[3:2];
         b[3] = 1;
         b[0] = 0;
         b[2] = 0;
