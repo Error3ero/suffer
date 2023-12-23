@@ -8,10 +8,11 @@ module main();
 
 
     initial begin
+        assign a[0] = 1;
         b[3] = 1;
         b[0] = 0;
         b[2] = 0;
-        $display("a = %dxd", a[1], a[0]);
+        $display("a = %d%d", a[1], a[0]);
 
         b[3] = 0;
         b[0] = 1;

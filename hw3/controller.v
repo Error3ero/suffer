@@ -1,6 +1,6 @@
 module decoder(clk, opcode, memtoreg, memwrite, branch, ALUsrc, regdst, regwrite, ALUop);
     input clk;
-    input [5:0] opcode;
+    input   [5:0] opcode;
     output wire memtoreg, memwrite, branch, ALUsrc, regdst, regwrite;
     output wire [1:0] ALUop;
 
