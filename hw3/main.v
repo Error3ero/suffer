@@ -4,8 +4,8 @@ module main();
     reg [1:0] a;
 
     initial begin
-        a[1] = 1;
-        a[0] = 0;
+        a[1] = 0;
+        a[0] = 1;
 
         case (a)
             2'b01 : $display("01");
