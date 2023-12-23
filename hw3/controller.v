@@ -1,4 +1,5 @@
-module decoder(opcode, memtoreg, memwrite, branch, ALUsrc, regdst, regwrite, ALUop);
+module decoder(clk, opcode, memtoreg, memwrite, branch, ALUsrc, regdst, regwrite, ALUop);
+    input clk;
     input [5:0] opcode;
     output wire memtoreg, memwrite, branch, ALUsrc, regdst, regwrite;
     output wire [1:0] ALUop;
@@ -17,7 +18,7 @@ module decoder(opcode, memtoreg, memwrite, branch, ALUsrc, regdst, regwrite, ALU
     supply0 zero;
     supply1 one;
 
-    always begin
+    always @ (posedge clk) begin
         case (opcode)
             6'b000000 : begin
                 toOut[7] = 0;
