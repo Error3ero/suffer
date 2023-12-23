@@ -3,7 +3,7 @@
 
 module main();
     wire a;
-    assign a = 0;
+    assign a = 1;
     wire b;
     wire [3:0] v;
 
