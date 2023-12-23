@@ -6,13 +6,13 @@ module main();
     initial begin
         i[0] = 0;
         i[1] = 1;
-        $display("i = %d", i);
+        $display("i = %d%d", i[1], i[0]);
 
         i[0] = 1;
-        $display("i = %d", i[1]);
+        $display("i = %d%d", i[1], i[0]);
 
         i[0] = 1'bx;
-        $display("i = %d", i);
+        $display("i = %d%d", i[1], i[0]);
     end
 
 
