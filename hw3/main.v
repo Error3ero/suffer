@@ -2,11 +2,15 @@
 
 module main();
     wire a;
-    supply1 one;
+    reg [3:0] b;
 
-    assign a = one;
+    assign a = b[0];
 
     initial begin
+        b[0] = 1;
+        $display("a = %d", a);
+
+        b[0] = 0;
         $display("a = %d", a);
     end
 
