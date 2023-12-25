@@ -8,6 +8,6 @@ module main();
     zero_extend ze(a, b);
 
     initial begin
-        $display("peins %n", b);
+        $display("peins %b", b);
     end
 endmodule
