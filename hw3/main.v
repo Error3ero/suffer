@@ -1,5 +1,4 @@
 `include "controller.v"
-`include "util.v"
 `include "ALU.v"
 
 module main();
