@@ -1,8 +1,8 @@
 module decoder(clk, opcode, memtoreg, memwrite, branch, ALUsrc, regdst, regwrite, ALUop);
     input clk;
     input [5:0] opcode;
-    output memtoreg, memwrite, branch, ALUsrc, regdst, regwrite;
-    output [1:0] ALUop;
+    output reg memtoreg, memwrite, branch, ALUsrc, regdst, regwrite;
+    output reg [1:0] ALUop;
 
     always @ (posedge clk) begin
         case (opcode)
@@ -50,7 +50,7 @@ module ALUDecoder(clk, ALUop, funct, ALUcontrol);
     input clk;
     input [1:0] ALUop;
     input [5:0] funct;
-    output [2:0] ALUcontrol;
+    output reg [2:0] ALUcontrol;
 
     always @ (posedge clk) begin
         if (ALUop[0] == 1) begin
