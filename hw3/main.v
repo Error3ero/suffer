@@ -4,7 +4,7 @@
 
 module main();
     reg [15:0] a = 16'b1010111010100001;
-    reg [31:0] b;
+    wire [31:0] b;
     zero_extend ze(a, b);
 
     initial begin
