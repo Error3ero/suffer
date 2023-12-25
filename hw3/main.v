@@ -4,10 +4,9 @@
 
 module main();
     reg [15:0] a = 16'b1010111010100001;
-    wire [31:0] b;
-    zero_extend ze(a, b);
+    wire b = a == 16'b1010111010100001;
 
     initial begin
-        $display("peins %b", b);
+        $display("peins %d", b);
     end
 endmodule
