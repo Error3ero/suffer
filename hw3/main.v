@@ -1,5 +1,6 @@
 `include "controller.v"
 `include "ALU.v"
+`include "util.v"
 
 module main();
     reg [15:0] a = 16'b1010111010100001;
