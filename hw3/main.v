@@ -6,14 +6,9 @@ module main();
     wire b = 1;
 
     wire c;
-    and_gate andgate(a, b, c);
+    assign c = (a == b) == (a == 1);
     initial begin
         $display("peins %d", c);
     end
 endmodule
 
-module and_gate(a, b, out);
-  input a, b;
-  output out;
-  assign out = a & b;
-endmodule
