@@ -1,18 +1,11 @@
 //`include "controller.v"
 
 module main();
-    output out;
-    input in;
-
-    assign in = 1;
-    not_gate gn(in, out);
-
-    wire a;
-    assign a = out;
+    reg [31:0] a = 32'b00000000000000000000000000000000;
+    reg [31:0] b;
+    adder adder1(a, 4, b);
     initial begin
-      $display("%d", in);
-      $display("%d", out);
-      $display("%d", a);
+      $display("%d", b);
     end
 endmodule
 
