@@ -55,7 +55,13 @@ module cpu_test();
 
   // Testbench
   reg [31:0] i_counter, reg_counter, mem_counter;
+
+  integer i;
   initial begin
+    #5
+    for (i = 0; i < 64; i = i + 1) begin
+      $display("instruction %d %b", i, cpu_instruction_memory.ram[i]);
+    end
     // Выполняем 30 тактов
     for (i_counter = 0; i_counter < 30; i_counter = i_counter + 1) begin
       #5

@@ -27,38 +27,6 @@ module mips_cpu(clk, pc, pc_new, instruction_memory_a, instruction_memory_rd, da
   // данные, полученные в результате чтения из регистрового файла
   inout [31:0] register_rd1, register_rd2;
 
-//  wire pcsrc, memtoreg, branch, ALUsrc, regdst, zero;
-//  wire [2:0] ALUcontrol;
-//  wire [31:0] pc4, res, signimm, srcb, tosh2, PCbranch;
-//
-//
-//  pc pc1(clk, pc_new, pc);
-//  mux2_32 topc(pc4, PCbranch, pcsrc, pc_new);
-//  instruction_memory instr1(instruction_memory_a, instruction_memory_rd);
-//  control control1(instruction_memory_rd[31:26], instruction_memory_rd[5:0], memtoreg, data_memory_we, branch, ALUsrc, regdst, register_we3, ALUcontrol);
-//
-//  assign register_a1 = instruction_memory_rd[25:21];
-//  assign register_a2 = instruction_memory_rd[20:16];
-//  assign register_wd3 = res;
-//
-//  mux2_5 writereg(instruction_memory_rd[20:16], instruction_memory_rd[15:11], regdst, register_a3);
-//
-//  register_file reg_file1(clk, register_we3, register_a1, register_a2, register_a3, register_wd3, register_rd1, register_rd2);
-//
-//  sign_extend sign_exd(instruction_memory_rd[15:0], signimm);
-//  mux2_32 srcb1(register_rd2, signimm, ALUsrc, srcb);
-//
-//  ALU alu1(register_rd1, srcb, ALUcontrol, data_memory_a, zero);
-//
-//  assign data_memory_wd = register_rd2;
-//
-//  data_memory data_memory1(data_memory_a, data_memory_we, clk, data_memory_wd, data_memory_rd);
-//  mux2_32 tores(data_memory_a, data_memory_rd, memtoreg, res);
-//
-//  shl_2 sh2(signimm, tosh2);
-//  adder adder1(tosh2, pc4, PCbranch);
-//  and_gate and_gate1(branch, zero, pcsrc);
-
   wire memtoreg, memwrite, branch, ALUsrc, regdst, regwrite, zero, PCSrc;
   wire [2:0] ALUControl;
   wire [4:0] WriteReg;
