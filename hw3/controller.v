@@ -20,36 +20,36 @@ module decoder(opcode, memtoreg, memwrite, branch, ALUsrc, regdst, regwrite, ALU
                 aop[1] = 1;
                 aop[0] = 0;
             end
-            6'b100011: begin
-                regwrite = 1;
-                regdst = 0;
-                ALUsrc = 1;
-                branch = 0;
-                memwrite = 0;
-                memtoreg = 1;
-                ALUop[1] = 0;
-                ALUop[0] = 0;
-            end
-            6'b101011: begin
-                regwrite = 0;
-                ALUsrc = 1;
-                branch = 0;
-                memwrite = 1;
-                ALUop[1] = 0;
-                ALUop[0] = 0;
-            end
-            6'b000100: begin
-                regwrite = 0;
-                ALUsrc = 0;
-                branch = 1;
-                memwrite = 0;
-                ALUop[1] = 0;
-                ALUop[0] = 1;
-            end
+//            6'b100011: begin
+//                regwrite = 1;
+//                regdst = 0;
+//                ALUsrc = 1;
+//                branch = 0;
+//                memwrite = 0;
+//                memtoreg = 1;
+//                ALUop[1] = 0;
+//                ALUop[0] = 0;
+//            end
+//            6'b101011: begin
+//                regwrite = 0;
+//                ALUsrc = 1;
+//                branch = 0;
+//                memwrite = 1;
+//                ALUop[1] = 0;
+//                ALUop[0] = 0;
+//            end
+//            6'b000100: begin
+//                regwrite = 0;
+//                ALUsrc = 0;
+//                branch = 1;
+//                memwrite = 0;
+//                ALUop[1] = 0;
+//                ALUop[0] = 1;
+//            end
         endcase
     end
 
-    assign regwrite = rw == 1'b1;
+    assign regwrite = rw;
     assign regdst = rd;
     assign ALUsrc = as;
     assign branch = br;
