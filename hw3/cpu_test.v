@@ -5,6 +5,7 @@
 `include "pc.v"
 `include "ALU.v"
 `include "d_flop.v"
+`include "util.v"
 
 module cpu_test();
   reg clk;
