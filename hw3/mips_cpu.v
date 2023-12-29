@@ -1,8 +1,8 @@
-`include "util.v"
-`include "pc.v"
-`include "controller.v"
-`include "memory.v"
-`include "register_file.v"
+//`include "util.v"
+//`include "pc.v"
+//`include "controller.v"
+//`include "memory.v"
+//`include "register_file.v"
 
 module mips_cpu(clk, pc, pc_new, instruction_memory_a, instruction_memory_rd, data_memory_a, data_memory_rd, data_memory_we, data_memory_wd,
                 register_a1, register_a2, register_a3, register_we3, register_wd3, register_rd1, register_rd2);
