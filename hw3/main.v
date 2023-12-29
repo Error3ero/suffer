@@ -5,7 +5,9 @@ module main();
     reg [5:0] a = 6'b100101;
     reg [5:0] b = 6'b000000;
     wire c;
-    assign c = b == 6'b000000 ? 1 == 1 : 1 == 0;
+    assign c = (a == 6'b000000) ? 0 :
+               (a == 6'b100101) ? 1 :
+                                 'bx;
 
     initial begin
         $display("peins %d", c);
