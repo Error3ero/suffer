@@ -43,14 +43,14 @@ module instruction_memory(a, rd);
   // файла intructions.dat
   initial begin
     $readmemb("instructions.dat", ram);
-    $display("instr mem init");
+    //$display("instr mem init");
   end
 
   // чтение происходит из элемента массива по a / 4, т.к.
   // адресация побайтовая, а ячейки массива по 32 бита (4 байта)
   assign rd = ram[a / 4];
-  always @* begin
-    $display("instruction %b", rd);
-  end
+//  always @* begin
+//    $display("instruction %b", rd);
+//  end
 endmodule
 
