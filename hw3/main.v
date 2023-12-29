@@ -3,7 +3,7 @@
 module main();
     reg [4:0] a = 11;
     reg [4:0] b = 1;
-    reg c = a == 11;
+    wire c = a == 11;
 
     wire moma;
 
