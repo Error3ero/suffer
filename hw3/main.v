@@ -6,7 +6,12 @@ module main();
     reg opcode = 6'b000000;
     decoder dc(opcode, a, b, c, d, e, f, g);
 
+    reg q = 1'b1;
+    wire t;
+    assign t = q;
+
     initial begin
+      $display("fuck it all %b", q);
       $display("%b", a);
       $display("%b", b);
       $display("%b", c);
