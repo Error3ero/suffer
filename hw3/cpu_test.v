@@ -1,6 +1,9 @@
 `include "mips_cpu.v"
 `include "memory.v"
 `include "register_file.v"
+`include "controller.v"
+`include "pc.v"
+`include "ALU.v"
 `include "d_flop.v"
 
 module cpu_test();
