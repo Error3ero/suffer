@@ -3,13 +3,26 @@
 module main();
     reg [4:0] a = 11;
     reg [4:0] b = 1;
-    wire c = a == 11;
+    reg c = 1;
 
-    wire moma;
+    wire [4:0] moma, aw, bw;
 
-    assign moma = c ? 0 : 1;
+    regToWire r1(a, aw);
+    regToWire r2(b, bw);
+
+    assign moma = c, bw, aw;
+
+
+
 
     initial begin
       $display("%b", moma);
     end
+endmodule
+
+module regToWire(a, out);
+  input [4:0] a;
+  output [4:0] out;
+
+  assign out = a;
 endmodule
