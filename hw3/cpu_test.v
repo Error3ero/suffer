@@ -2,7 +2,7 @@
 `include "memory.v"
 `include "register_file.v"
 `include "controller.v"
-`include "pc.v"
+//`include "pc.v"
 `include "ALU.v"
 `include "d_flop.v"
 `include "util.v"
