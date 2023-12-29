@@ -27,7 +27,18 @@ module decoder(opcode, memtoreg, memwrite, branch, ALUsrc, regdst, regwrite, ALU
   assign memwrite = res[3];
   assign memtoreg = res[2];
   assign ALUop = res[1:0];
-  initial #10 $display("eladwlehfhwef %b" , res);
+  initial begin
+    #10
+    $display("eladwlehfhwef %b" , res);
+    $display("eladw %b" , regwrite);
+    $display("el %b" , regdst);
+    $display("ela %b" , ALUsrc);
+    $display("ela %b" , branch);
+    $display("ela %b" , ALUop);
+    $display("ela %b" , memtoreg);
+
+
+  end
 endmodule
 
 //module ALUDecoder(ALUop, funct, ALUcontrol);
