@@ -84,7 +84,7 @@ module mips_cpu(clk, pc, pc_new, instruction_memory_a, instruction_memory_rd, da
   mux2_32 toResult(ALUResult, data_memory_rd, memtoreg, Result);
   assign register_wd3 = Result;
 
-  and_gate and_gate1(zero, branch);
+  and_gate and_gate1(zero, branch, PCSrc);
 
   adder adder0(pc, 4, PCPlus4);
   shl_2 shl2(Signimm, toAdder);
