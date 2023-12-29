@@ -48,5 +48,6 @@ module instruction_memory(a, rd);
   // чтение происходит из элемента массива по a / 4, т.к.
   // адресация побайтовая, а ячейки массива по 32 бита (4 байта)
   assign rd = ram[a / 4];
+  always @* $display("instruction %b", rd);
 endmodule
 
