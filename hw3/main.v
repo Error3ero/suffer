@@ -1,5 +1,5 @@
-//`include "controller.v"
-`include "util.v"
+`include "controller.v"
+//`include "util.v"
 module main();
   reg [5:0] opc = 6'b000000;
 
