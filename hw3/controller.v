@@ -1,21 +1,24 @@
 // TODO: redo
 module decoder(opcode, memtoreg, memwrite, branch, ALUsrc, regdst, regwrite, ALUop);
   input [5:0] opcode;
-  output reg memtoreg, memwrite, branch, ALUsrc, regdst, regwrite;
-  output reg [1:0] ALUop;
+  output memtoreg, memwrite, branch, ALUsrc, regdst, regwrite;
+  output [1:0] ALUop;
+
+  reg rw, rd, as, br, mw, mtr;
+  reg [1:0] aop;
 
 
     always @* begin
         case (opcode)
             6'b000000: begin
-                regwrite = 1;
-                regdst = 1;
-                ALUsrc = 0;
-                branch = 0;
-                memwrite = 0;
-                memtoreg = 0;
-                ALUop[1] = 1;
-                ALUop[0] = 0;
+                rw = 1;
+                rd = 1;
+                as = 0;
+                br = 0;
+                mw = 0;
+                mtr = 0;
+                aop[1] = 1;
+                aop[0] = 0;
             end
             6'b100011: begin
                 regwrite = 1;
@@ -44,6 +47,13 @@ module decoder(opcode, memtoreg, memwrite, branch, ALUsrc, regdst, regwrite, ALU
                 ALUop[0] = 1;
             end
         endcase
+        assign regwrite = rw;
+        assign regdst = rd;
+        assign ALUsrc = as;
+        assign branch = br;
+        assign memwrite = mw;
+        assign memtoreg = mtr;
+        assign ALUop = aop;
     end
 endmodule
 
