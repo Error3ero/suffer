@@ -63,7 +63,7 @@ module ALUDecoder(ALUop, funct, ALUcontrol);
     input [5:0] funct;
     output [2:0] ALUcontrol;
 
-    wire [2:0] ac;
+    reg [2:0] ac;
 
     always @* begin
         if (ALUop[0] == 1) begin
@@ -108,6 +108,8 @@ module ALUDecoder(ALUop, funct, ALUcontrol);
             end
         endcase
     end
+
+    assign ALUcontrol = ac;
 endmodule
 
 
