@@ -11,6 +11,7 @@ module decoder(opcode, memtoreg, memwrite, branch, ALUsrc, regdst, regwrite, ALU
     always @* begin
         case (opcode)
             6'b000000: begin
+                $display("anus");
                 rw = 1;
                 rd = 1;
                 as = 0;
