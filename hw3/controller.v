@@ -6,8 +6,10 @@ module decoder(opcode, memtoreg, memwrite, branch, ALUsrc, regdst, regwrite, ALU
 
   wire [7:0] res;
 
-  reg rw, rd, as, br, mw, mtr;
-  reg [1:0] aop;
+  parameter rtype = 8'b11000010;
+  parameter lw = 8'b10100100;
+  parameter sw = 8'b0x101x00;
+  parameter beq = 8'b0x010x01;
 
 
     always @* begin
