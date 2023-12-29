@@ -49,13 +49,13 @@ module decoder(opcode, memtoreg, memwrite, branch, ALUsrc, regdst, regwrite, ALU
         endcase
     end
 
-    assign regwrite = rw;
-    assign regdst = rd;
-    assign ALUsrc = as;
-    assign branch = br;
-    assign memwrite = mw;
-    assign memtoreg = mtr;
-    assign ALUop = aop;
+    assign regwrite = rw == 1'b1;
+    assign regdst = rd == 1'b1;
+    assign ALUsrc = as == 1'b1;
+    assign branch = br == 1'b1;
+    assign memwrite = mw == 1'b1;
+    assign memtoreg = mtr == 1'b1;
+    assign ALUop = aop == 1'b1;
 
 endmodule
 
