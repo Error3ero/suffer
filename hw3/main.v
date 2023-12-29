@@ -1,8 +1,8 @@
 `include "controller.v"
 
 module main();
-    reg a, b, c, d, e, f;
-    reg [1:0] g;
+    inout a, b, c, d, e, f;
+    inout [1:0] g;
     reg opcode = 6'b000000;
     decoder dc(opcode, a, b, c, d, e, f, g);
 
