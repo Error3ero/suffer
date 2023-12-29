@@ -2,12 +2,10 @@
 `include "ALU.v"
 
 module main();
-    wire a = 0;
-    wire b = 1;
-
+    reg [5:0] a = 6'b100101;
     wire c;
+    assign c = a == 6'b100101;
 
-    and_gate an(a, b, c);
     initial begin
         $display("peins %d", c);
     end
