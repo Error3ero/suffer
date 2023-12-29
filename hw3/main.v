@@ -6,6 +6,7 @@ module main();
     //shl_2 s(a, b);
     assign b = {a[29:0], 2'b11};
     initial begin
+      $display("%b", a);
       $display("%b", b);
     end
 endmodule
