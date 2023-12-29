@@ -8,6 +8,9 @@ module main();
 
     initial begin
         $display("peins %d", c);
+        a = 6'b011010;
+        $display("peins %d", c);
+        $display("peins %b", a);
     end
 endmodule
 
