@@ -56,7 +56,7 @@ module mips_cpu(clk, pc, pc_new, instruction_memory_a, instruction_memory_rd, da
   mux2_32 tores(data_memory_a, data_memory_rd, memtoreg, res);
 
   shl_2 sh2(signimm, tosh2);
-  adder adder1(tosh2, pc4, PCbranch)
+  adder adder1(tosh2, pc4, PCbranch);
   and_gate and_gate1(branch, zero, pcsrc);
   // TODO: implementation
 endmodule
