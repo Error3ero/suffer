@@ -3,7 +3,7 @@
 module main();
     reg [15:0] a = 4;
     wire [31:0] b;
-    sign_extend s(a, b);
+    shl_2 s(a, b);
     initial begin
       $display("%b", b);
     end
