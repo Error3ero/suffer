@@ -6,10 +6,10 @@ module not_32(a, out);
 endmodule
 
 module zero_extend(a, out);
-    input a;
+    input a[31:0];
     output [31:0] out;
 
-    assign out = {31'b0000000000000000000000000000000, a};
+    assign out = {31'b0000000000000000000000000000000, a[31]};
 endmodule
 
 module and_32(a, b, out);
