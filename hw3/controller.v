@@ -20,42 +20,42 @@ module decoder(opcode, memtoreg, memwrite, branch, ALUsrc, regdst, regwrite, ALU
                 aop[1] = 1;
                 aop[0] = 0;
             end
-//            6'b100011: begin
-//                regwrite = 1;
-//                regdst = 0;
-//                ALUsrc = 1;
-//                branch = 0;
-//                memwrite = 0;
-//                memtoreg = 1;
-//                ALUop[1] = 0;
-//                ALUop[0] = 0;
-//            end
-//            6'b101011: begin
-//                regwrite = 0;
-//                ALUsrc = 1;
-//                branch = 0;
-//                memwrite = 1;
-//                ALUop[1] = 0;
-//                ALUop[0] = 0;
-//            end
-//            6'b000100: begin
-//                regwrite = 0;
-//                ALUsrc = 0;
-//                branch = 1;
-//                memwrite = 0;
-//                ALUop[1] = 0;
-//                ALUop[0] = 1;
-//            end
+            6'b100011: begin
+                rw = 1;
+                rd = 0;
+                as = 1;
+                br = 0;
+                mw = 0;
+                mtr = 1;
+                aop[1] = 0;
+                aop[0] = 0;
+            end
+            6'b101011: begin
+                rw = 0;
+                as = 1;
+                br = 0;
+                mw = 1;
+                aop[1] = 0;
+                aop[0] = 0;
+            end
+            6'b000100: begin
+                rw = 0;
+                as = 0;
+                br = 1;
+                mw = 0;
+                aop[1] = 0;
+                aop[0] = 1;
+            end
         endcase
     end
 
-    assign regwrite = rw == 1'b1;
-    assign regdst = rd == 1'b1;
-    assign ALUsrc = as == 1'b1;
-    assign branch = br == 1'b1;
-    assign memwrite = mw == 1'b1;
-    assign memtoreg = mtr == 1'b1;
-    assign ALUop = aop == 1'b1;
+    assign regwrite = rw;
+    assign regdst = rd;
+    assign ALUsrc = as;
+    assign branch = br;
+    assign memwrite = mw;
+    assign memtoreg = mtr;
+    assign ALUop = aop;
 
 endmodule
 
