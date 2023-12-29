@@ -4,10 +4,9 @@
 module main();
     reg [5:0] a = 6'b100101;
     reg [5:0] b = 6'b000000;
-    reg c;
-    assign c = (a == 6'b000000) ? 0 :
-               (a == 6'b100101) ? 1 :
-                                 'bx;
+    wire c;
+
+    and_gate an1(a == 6'b000000, 1, c);
 
     initial begin
         $display("peins %d", c);
