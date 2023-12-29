@@ -62,9 +62,8 @@ module mips_cpu(clk, pc, pc_new, instruction_memory_a, instruction_memory_rd, da
   always @ (posedge clk) begin
     $display("pc %b", pc);
     $display("pc_new %b", pc_new);
-    $display("instruction_memory_a %b", instruction_memory_a);
-    $display("instruction_memory_rd %b", instruction_memory_rd);
     $display("instruction_memory_rd[31:26] %b", instruction_memory_rd[31:26]);
+    $display("%b, %b, %b %b, %b, %b, %b", memtoreg, memwrite, branch, ALUsrc, regdst, regwrite, ALUControl);
   end
   // TODO: implementation
 endmodule
