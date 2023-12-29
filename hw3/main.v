@@ -3,7 +3,7 @@
 module main();
     reg [31:0] a = 11;
     wire [29:0] i;
-    assign i = a[29:0];
+    assign i = a[29:26];
     wire [31:0] b;
 //    shl_2 s(a, b);
     assign b = {a[29:0], 2'b00};
