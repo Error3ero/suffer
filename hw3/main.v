@@ -2,26 +2,23 @@
 `include "ALU.v"
 
 module main();
-    reg [5:0] a = 6'b100101;
-    reg [5:0] b = 6'b000000;
-    wire c;
-
-    and_gate an1(a == 6'b000000, 1, c);
+    reg a, b, c, d, e, f;
+    reg [1:0] g;
+    reg opcode = 6'b000000;
+    decoder dc(opcode, a, b, c, d, e, f, g);
 
     initial begin
-        $display("peins %d", c);
-        a = 6'b011010;
-        $display("peins %d", c);
-        $display("peins %b", a);
+      $display("%b", a);
+      $display("%b", b);
+      $display("%b", c);
+      $display("%b", d);
+      $display("%b", e);
+      $display("%b", f);
+      $display("%b", g);
     end
 endmodule
 
-module test(a, out);
-  input a;
-  output reg out;
 
-
-endmodule
 
 module and_gate(a, b, out);
   input wire a, b;
