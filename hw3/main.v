@@ -1,5 +1,5 @@
 //`include "controller.v"
-
+`include "util.v"
 module main();
     reg [31:0] a = 32'b00000000000000000000000000000000;
     reg [31:0] b;
