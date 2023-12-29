@@ -39,7 +39,7 @@ module ALU(a, b, ALUcontrol, out, zero);
 
     mux2_32 mux1(b, inverted, ALUcontrol[2], bmux);
     adder adder1(a, bmux, sum);
-    zero_extend zero(sum, zerosum);
+    zero_extend zero1(sum, zerosum);
     and_32 and1(a, bmux, aandb);
     or_32 or1(a, bmux, aorb);
 
