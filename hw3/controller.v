@@ -30,74 +30,74 @@ module decoder(opcode, memtoreg, memwrite, branch, ALUsrc, regdst, regwrite, ALU
   initial #10 $display("eladwlehfhwef %b" , res);
 endmodule
 
-module ALUDecoder(ALUop, funct, ALUcontrol);
-    input [1:0] ALUop;
-    input [5:0] funct;
-    output [2:0] ALUcontrol;
-
-    reg [2:0] ac;
-
-    always @* begin
-        if (ALUop[0] == 1) begin
-            ac[2] = 1;
-            ac[1] = 1;
-            ac[0] = 0;
-        end
-        case (ALUop)
-            2'b00: begin
-                ac[2] = 0;
-                ac[1] = 1;
-                ac[0] = 0;
-            end
-            2'b10, 2'b11: begin
-                case (funct)
-                    6'b100000: begin
-                ac[2] = 0;
-                ac[1] = 1;
-                ac[0] = 0;
-                    end
-                    6'b100010: begin
-                ac[2] = 1;
-                ac[1] = 1;
-                ac[0] = 0;
-                    end
-                    6'b100100: begin
-                ac[2] = 0;
-                ac[1] = 0;
-                ac[0] = 0;
-                    end
-                    6'b100101: begin
-                ac[2] = 0;
-                ac[1] = 0;
-                ac[0] = 1;
-                    end
-                    6'b101010: begin
-                ac[2] = 1;
-                ac[1] = 1;
-                ac[0] = 1;
-                    end
-                endcase
-            end
-        endcase
-    end
-
-    assign ALUcontrol = ac;
-endmodule
-
-
-// TODO: remove aluop output
-module control(opcode, funct, memtoreg, memwrite, branch, ALUsrc, regdst, regwrite, ALUcontrol);
-    input clk;
-    input [5:0] opcode;
-    input [5:0] funct;
-    output memtoreg, memwrite, branch, ALUsrc, regdst, regwrite;
-    wire [1:0] ALUop;
-    output [2:0] ALUcontrol;
-
-    decoder d(opcode, memtoreg, memwrite, branch, ALUsrc, regdst, regwrite, ALUop);
-    ALUDecoder a(ALUop, funct, ALUcontrol);
-endmodule
-
+//module ALUDecoder(ALUop, funct, ALUcontrol);
+//    input [1:0] ALUop;
+//    input [5:0] funct;
+//    output [2:0] ALUcontrol;
+//
+//    reg [2:0] ac;
+//
+//    always @* begin
+//        if (ALUop[0] == 1) begin
+//            ac[2] = 1;
+//            ac[1] = 1;
+//            ac[0] = 0;
+//        end
+//        case (ALUop)
+//            2'b00: begin
+//                ac[2] = 0;
+//                ac[1] = 1;
+//                ac[0] = 0;
+//            end
+//            2'b10, 2'b11: begin
+//                case (funct)
+//                    6'b100000: begin
+//                ac[2] = 0;
+//                ac[1] = 1;
+//                ac[0] = 0;
+//                    end
+//                    6'b100010: begin
+//                ac[2] = 1;
+//                ac[1] = 1;
+//                ac[0] = 0;
+//                    end
+//                    6'b100100: begin
+//                ac[2] = 0;
+//                ac[1] = 0;
+//                ac[0] = 0;
+//                    end
+//                    6'b100101: begin
+//                ac[2] = 0;
+//                ac[1] = 0;
+//                ac[0] = 1;
+//                    end
+//                    6'b101010: begin
+//                ac[2] = 1;
+//                ac[1] = 1;
+//                ac[0] = 1;
+//                    end
+//                endcase
+//            end
+//        endcase
+//    end
+//
+//    assign ALUcontrol = ac;
+//endmodule
+//
+//
+//// TODO: remove aluop output
+//module control(opcode, funct, memtoreg, memwrite, branch, ALUsrc, regdst, regwrite, ALUcontrol);
+//    input clk;
+//    input [5:0] opcode;
+//    input [5:0] funct;
+//    output memtoreg, memwrite, branch, ALUsrc, regdst, regwrite;
+//    wire [1:0] ALUop;
+//    output [2:0] ALUcontrol;
+//
+//    decoder d(opcode, memtoreg, memwrite, branch, ALUsrc, regdst, regwrite, ALUop);
+//    ALUDecoder a(ALUop, funct, ALUcontrol);
+//endmodule
+//
 module regToWire8(a, out);
   input [7:0] a;
   output [7:0] out;
