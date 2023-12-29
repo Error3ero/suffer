@@ -13,7 +13,12 @@ module decoder(opcode, memtoreg, memwrite, branch, ALUsrc, regdst, regwrite, ALU
 
   wire [7:0] rtype, lw, sw, beq;
 
-  regToWire rtw1(8'b11000010, lw)
+  regToWire6 rtw1(rtyper, rtype);
+  regToWire6 rtw2(lwr ,lw);
+  regToWire6 rtw3(swr, sw);
+  regToWire6 rtw4(beqr, beq);
+
+  assign res = opcode == 6'b000000 ? rtype : opcode == 6'b100011 ? lw : opcode == 6'b101011 ? sw : opcode == 6'b000100 ? beq : 8'bxxxxxxxx;
 
   assign regwrite = res[7];
   assign regdst = res[6];

@@ -1,28 +1,17 @@
 //`include "controller.v"
 `include "util.v"
 module main();
-    reg [4:0] a = 11;
-    reg [4:0] b = 1;
-    reg c = 1;
-    parameter pidaras = 5'b11011;
+  reg [5:0] opc = 6'b000000;
 
-    wire [4:0] moma, aw, bw;
+  wire memtoreg, memwrite, branch, ALUsrc, regdst, regwrite;
+  wire [1:0] ALUop;
 
-    regToWire r1(5'b01011, aw);
-    regToWire r2(b, bw);
-
-    assign moma = 1 == 2 ? bw : c ? aw : bw;
+  decoder dc(opc, memtoreg, memwrite, branch, ALUsrc, regdst, regwrite, ALUop);
 
 
 
-    initial begin
-      $display("%b", moma);
-    end
+  initial begin
+    $display("%b, %b, %b, %b, %b, %b, %b", memtoreg, memwrite, branch, ALUsrc, regdst, regwrite, ALUop);
+  end
 endmodule
 
-module regToWire(a, out);
-  input [4:0] a;
-  output [4:0] out;
-
-  assign out = a;
-endmodule
