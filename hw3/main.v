@@ -2,9 +2,10 @@
 `include "util.v"
 module main();
     reg [5:0] opcode = 6'b000000;
-
+    wire c1;
+    assign c1 = opcode == 6'b000000;
     wire b;
-    assign b = (opcode == 6'b000000) ? 1 : 0;
+    assign b = b ? 1 : 0;
 
 
 
