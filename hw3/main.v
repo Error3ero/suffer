@@ -1,21 +1,18 @@
 `include "controller.v"
 
 module main();
-    inout a, b, c, d, e, f;
-    inout [1:0] g;
-    reg [5:0] opcode = 6'b000000;
-    decoder dc(opcode, a, b, c, d, e, f, g);
+    output out;
+    input in;
 
+    assign in = 1;
+    not_gate gn(in, out);
+
+    wire a;
+    assign a = out;
     initial begin
-      $display("pinas");
-      #5 $display("double pinas");
+      $display("%d", in);
+      $display("%d", out);
       $display("%d", a);
-      $display("%d", b);
-      $display("%d", c);
-      $display("%d", d);
-      $display("%d", e);
-      $display("%d", f);
-      $display("%b", g);
     end
 endmodule
 
