@@ -47,7 +47,7 @@ module mips_cpu(clk, pc, pc_new, instruction_memory_a, instruction_memory_rd, da
   adder addpc(pc, 4 , pcp4);
   register_file rf(clk, register_we3, instruction_memory_rd[25:21], instruction_memory_rd[20:16], register_a3, regwd3, register_rd1, register_rd2);
   mux2_5 wr(instruction_memory_rd[20:16], instruction_memory_rd[15:11], regdst, register_a3);
-  mux2_32 srcb(regrd2, signimm, ALUsrc, srcB)
+  mux2_32 srcb(regrd2, signimm, ALUsrc, srcB);
   control c(opcode, funct, memtoreg, memwrite, branch, ALUsrc, regdst, regwrite, ALUcontrol);
   sign_extend se(instruction_memory_rd[15:0], signimm);
   shl_2 s2(signimm, sh2);
