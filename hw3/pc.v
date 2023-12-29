@@ -1,8 +1,10 @@
 module pc(clk, pc_next, pc);
     input clk;
     input [31:0] pc_next;
-    output reg [31:0] pc;
+    output [31:0] pc;
+    reg [31:0] pcr;
     always @(posedge clk) begin
-        pc = pc_next;
+        pcr = pc_next;
     end
+    assign pc = pcr;
 endmodule
