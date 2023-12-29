@@ -1,17 +1,16 @@
 //`include "controller.v"
 `include "util.v"
 module main();
-    reg [5:0] opcode = 6'b000000;
-    wire c1;
-    assign c1 = opcode == 6'b000000;
-    wire b[1:0];
-    assign b = c1 ? {1, 0} : {0, 1};
+    reg [4:0] a = 11;
+    reg [4:0] b = 1;
+    reg c = 1;
 
+    wire [4:0] moma;
 
+    mux2_5 xui(a, b, c, moma);
 
 
     initial begin
-      $display("%b", c1);
-      $display("%b", b);
+      $display("%b", moma);
     end
 endmodule
