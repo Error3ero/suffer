@@ -60,7 +60,8 @@ module mips_cpu(clk, pc, pc_new, instruction_memory_a, instruction_memory_rd, da
   mux2_32 toPC(PCPlus4, PCBranch, PCSrc, pc_new);
 
   always @ (posedge clk) begin
-    $display("Signimm %b", Signimm);
+    $display("instruction_memory_a %b", instruction_memory_a);
+    $display("instruction_memory_rd %b", instruction_memory_rd);
   end
   // TODO: implementation
 endmodule
