@@ -47,14 +47,16 @@ module decoder(opcode, memtoreg, memwrite, branch, ALUsrc, regdst, regwrite, ALU
                 ALUop[0] = 1;
             end
         endcase
-        assign regwrite = rw;
-        assign regdst = rd;
-        assign ALUsrc = as;
-        assign branch = br;
-        assign memwrite = mw;
-        assign memtoreg = mtr;
-        assign ALUop = aop;
     end
+
+    assign regwrite = rw;
+    assign regdst = rd;
+    assign ALUsrc = as;
+    assign branch = br;
+    assign memwrite = mw;
+    assign memtoreg = mtr;
+    assign ALUop = aop;
+
 endmodule
 
 module ALUDecoder(ALUop, funct, ALUcontrol);
