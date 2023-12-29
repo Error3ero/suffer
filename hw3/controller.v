@@ -6,60 +6,22 @@ module decoder(opcode, memtoreg, memwrite, branch, ALUsrc, regdst, regwrite, ALU
 
   wire [7:0] res;
 
-  parameter rtype = 8'b11000010;
-  parameter lw = 8'b10100100;
-  parameter sw = 8'b0x101x00;
-  parameter beq = 8'b0x010x01;
+  reg [7:0] rtyper = 8'b11000010;
+  reg [7:0] lwr = 8'b10100100;
+  reg [7:0] swr = 8'b0x101x00;
+  reg [7:0] beqr = 8'b0x010x01;
 
+  wire [7:0] rtype, lw, sw, beq;
 
-    always @* begin
-        case (opcode)
-            6'b000000: begin
-                rw = 1;
-                rd = 1;
-                as = 0;
-                br = 0;
-                mw = 0;
-                mtr = 0;
-                aop[1] = 1;
-                aop[0] = 0;
-            end
-            6'b100011: begin
-                rw = 1;
-                rd = 0;
-                as = 1;
-                br = 0;
-                mw = 0;
-                mtr = 1;
-                aop[1] = 0;
-                aop[0] = 0;
-            end
-            6'b101011: begin
-                rw = 0;
-                as = 1;
-                br = 0;
-                mw = 1;
-                aop[1] = 0;
-                aop[0] = 0;
-            end
-            6'b000100: begin
-                rw = 0;
-                as = 0;
-                br = 1;
-                mw = 0;
-                aop[1] = 0;
-                aop[0] = 1;
-            end
-        endcase
-    end
+  regToWire rtw1(8'b11000010, lw)
 
-    assign regwrite = rw;
-    assign regdst = rd;
-    assign ALUsrc = as;
-    assign branch = br;
-    assign memwrite = mw;
-    assign memtoreg = mtr;
-    assign ALUop = aop;
+  assign regwrite = res[7];
+  assign regdst = res[6];
+  assign ALUsrc = res[5];
+  assign branch = res[4];
+  assign memwrite = res[3];
+  assign memtoreg = res[2];
+  assign ALUop = res[1:0];
 
 endmodule
 

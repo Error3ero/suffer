@@ -8,7 +8,7 @@ module main();
 
     wire [4:0] moma, aw, bw;
 
-    regToWire r1(a, aw);
+    regToWire r1(5'b01011, aw);
     regToWire r2(b, bw);
 
     assign moma = 1 == 2 ? bw : c ? aw : bw;
