@@ -4,4 +4,5 @@ module pc(clk, pc_next, pc);
     output reg [31:0] pc;
     always @(posedge clk)
         pc = pc_next;
+        $display("pc_next %b", pc_next);
 endmodule
