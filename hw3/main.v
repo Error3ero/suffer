@@ -6,7 +6,7 @@ module main();
     assign a[1] = 0;
     assign a[0] = 1;
     wire [31:0] b;
-    assign b = {{31{1'b0}}, 1'b1};
+    shl_2 s(a, b);
     initial begin
       $display("%b", b);
     end
