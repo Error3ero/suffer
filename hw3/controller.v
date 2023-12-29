@@ -13,10 +13,10 @@ module decoder(opcode, memtoreg, memwrite, branch, ALUsrc, regdst, regwrite, ALU
 
   wire [7:0] rtype, lw, sw, beq;
 
-  regToWire6 rtw1(rtyper, rtype);
-  regToWire6 rtw2(lwr ,lw);
-  regToWire6 rtw3(swr, sw);
-  regToWire6 rtw4(beqr, beq);
+  regToWire8 rtw1(rtyper, rtype);
+  regToWire8 rtw2(lwr ,lw);
+  regToWire8 rtw3(swr, sw);
+  regToWire8 rtw4(beqr, beq);
 
   assign res = opcode == 6'b000000 ? rtype : opcode == 6'b100011 ? lw : opcode == 6'b101011 ? sw : opcode == 6'b000100 ? beq : 8'bxxxxxxxx;
 
@@ -98,9 +98,9 @@ module control(opcode, funct, memtoreg, memwrite, branch, ALUsrc, regdst, regwri
     ALUDecoder a(ALUop, funct, ALUcontrol);
 endmodule
 
-module regToWire6(a, out);
-  input [5:0] a;
-  output [5:0] out;
+module regToWire8(a, out);
+  input [7:0] a;
+  output [7:0] out;
 
   assign out = a;
 endmodule
