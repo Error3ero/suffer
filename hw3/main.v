@@ -4,7 +4,7 @@
 module main();
     reg [5:0] a = 6'b100101;
     reg [5:0] b = 6'b000000;
-    wire c;
+    reg c;
     assign c = (a == 6'b000000) ? 0 :
                (a == 6'b100101) ? 1 :
                                  'bx;
@@ -15,6 +15,13 @@ module main();
         $display("peins %d", c);
         $display("peins %b", a);
     end
+endmodule
+
+module test(a, out);
+  input a;
+  output reg out;
+
+
 endmodule
 
 module and_gate(a, b, out);
