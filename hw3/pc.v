@@ -3,5 +3,5 @@ module pc(clk, pc_next, pc);
     input [31:0] pc_next;
     output reg [31:0] pc;
     always @(posedge clk)
-        pc <= pc_next;
+        pc = pc_next;
 endmodule

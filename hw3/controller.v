@@ -1,10 +1,11 @@
-module decoder(clk, opcode, memtoreg, memwrite, branch, ALUsrc, regdst, regwrite, ALUop);
-    input clk;
-    input [5:0] opcode;
-    output reg memtoreg, memwrite, branch, ALUsrc, regdst, regwrite;
-    output reg [1:0] ALUop;
+// TODO: redo
+module decoder(opcode, memtoreg, memwrite, branch, ALUsrc, regdst, regwrite, ALUop);
+  input [5:0] opcode;
+  output reg memtoreg, memwrite, branch, ALUsrc, regdst, regwrite;
+  output reg [1:0] ALUop;
 
-    always @ (posedge clk) begin
+
+    always @* begin
         case (opcode)
             6'b000000: begin
                 regwrite = 1;
@@ -46,13 +47,12 @@ module decoder(clk, opcode, memtoreg, memwrite, branch, ALUsrc, regdst, regwrite
     end
 endmodule
 
-module ALUDecoder(clk, ALUop, funct, ALUcontrol);
-    input clk;
+module ALUDecoder(ALUop, funct, ALUcontrol);
     input [1:0] ALUop;
     input [5:0] funct;
     output reg [2:0] ALUcontrol;
 
-    always @ (posedge clk) begin
+    always @* begin
         if (ALUop[0] == 1) begin
             ALUcontrol[2] = 1;
             ALUcontrol[1] = 1;
@@ -97,12 +97,14 @@ module ALUDecoder(clk, ALUop, funct, ALUcontrol);
     end
 endmodule
 
-module control(clk, opcode, funct, memtoreg, memwrite, branch, ALUsrc, regdst, regwrite, ALUop, ALUcontrol);
+
+// TODO: remove aluop output
+module control(opcode, funct, memtoreg, memwrite, branch, ALUsrc, regdst, regwrite, ALUcontrol);
     input clk;
     input [5:0] opcode;
     input [5:0] funct;
     output memtoreg, memwrite, branch, ALUsrc, regdst, regwrite;
-    output [1:0] ALUop;
+    wire [1:0] ALUop;
     output [2:0] ALUcontrol;
 
     decoder d(clk, opcode, memtoreg, memwrite, branch, ALUsrc, regdst, regwrite, ALUop);
