@@ -1,5 +1,4 @@
 `include "controller.v"
-`include "ALU.v"
 
 module main();
     reg a, b, c, d, e, f;
