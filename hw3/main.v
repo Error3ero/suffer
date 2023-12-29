@@ -16,7 +16,7 @@ module main();
 
 
     initial begin
-      $display("%b", pidaras);
+      $display("%b", moma);
     end
 endmodule
 
