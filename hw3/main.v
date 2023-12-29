@@ -7,12 +7,14 @@ module main();
     decoder dc(opcode, a, b, c, d, e, f, g);
 
     initial begin
-      $display("%b", a);
-      $display("%b", b);
-      $display("%b", c);
-      $display("%b", d);
-      $display("%b", e);
-      $display("%b", f);
+      $display("pinas");
+      #5 $display("double pinas");
+      $display("%d", a);
+      $display("%d", b);
+      $display("%d", c);
+      $display("%d", d);
+      $display("%d", e);
+      $display("%d", f);
       $display("%b", g);
     end
 endmodule
