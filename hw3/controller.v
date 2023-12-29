@@ -4,8 +4,11 @@ module decoder(opcode, memtoreg, memwrite, branch, ALUsrc, regdst, regwrite, ALU
   output memtoreg, memwrite, branch, ALUsrc, regdst, regwrite;
   output [1:0] ALUop;
 
+  wire [7:0] res;
+
   reg rw, rd, as, br, mw, mtr;
   reg [1:0] aop;
+
 
     always @* begin
         case (opcode)
@@ -124,4 +127,11 @@ module control(opcode, funct, memtoreg, memwrite, branch, ALUsrc, regdst, regwri
 
     decoder d(opcode, memtoreg, memwrite, branch, ALUsrc, regdst, regwrite, ALUop);
     ALUDecoder a(ALUop, funct, ALUcontrol);
+endmodule
+
+module regToWire6(a, out);
+  input [5:0] a;
+  output [5:0] out;
+
+  assign out = a;
 endmodule

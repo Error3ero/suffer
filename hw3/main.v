@@ -11,12 +11,12 @@ module main();
     regToWire r2(b, bw);
 
     assign moma = 1 == 2 ? bw : c ? aw : bw;
-
+     parameter pidaras = 3'b110;
 
 
 
     initial begin
-      $display("%b", moma);
+      $display("%b", pidaras);
     end
 endmodule
 
