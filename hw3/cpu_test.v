@@ -63,6 +63,8 @@ module cpu_test();
       clk = 1;
       #5
       clk = 0;
+      $display("pc %b", pc);
+      $display("pc_new %b", pc_new);
     end
     // Дампим регистры
     for (reg_counter = 0; reg_counter < 32; reg_counter = reg_counter + 1) begin
