@@ -3,7 +3,7 @@
 module main();
     inout a, b, c, d, e, f;
     inout [1:0] g;
-    reg opcode = 6'b000000;
+    reg [5:0] opcode = 6'b000000;
     decoder dc(opcode, a, b, c, d, e, f, g);
 
     initial begin
