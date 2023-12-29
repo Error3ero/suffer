@@ -10,7 +10,7 @@ module main();
     regToWire r1(a, aw);
     regToWire r2(b, bw);
 
-    assign moma = c, bw, aw;
+    assign moma = c ? bw : aw;
 
 
 
