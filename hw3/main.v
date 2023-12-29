@@ -11,6 +11,7 @@ module main();
 
 
     initial begin
+      $display("%b", c1);
       $display("%b", b);
     end
 endmodule
