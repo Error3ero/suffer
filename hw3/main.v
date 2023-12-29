@@ -1,9 +1,14 @@
 //`include "controller.v"
 `include "util.v"
 module main();
-    reg [31:0] a = 11;
-    wire [31:0] b;
-    shl_2 s(a, b);
+    reg [5:0] opcode = 6'b000000;
+
+    wire b;
+    assign b = opcode == 6'b111111 ? 1 : (opcode == 6'b000000 ? 0 : 1'bx);
+
+
+
+
     initial begin
       $display("%b", b);
     end
