@@ -107,6 +107,6 @@ module control(opcode, funct, memtoreg, memwrite, branch, ALUsrc, regdst, regwri
     wire [1:0] ALUop;
     output [2:0] ALUcontrol;
 
-    decoder d(clk, opcode, memtoreg, memwrite, branch, ALUsrc, regdst, regwrite, ALUop);
-    ALUDecoder a(clk, ALUop, funct, ALUcontrol);
+    decoder d(opcode, memtoreg, memwrite, branch, ALUsrc, regdst, regwrite, ALUop);
+    ALUDecoder a(ALUop, funct, ALUcontrol);
 endmodule
