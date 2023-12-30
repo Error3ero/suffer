@@ -6,7 +6,7 @@ module control(clk, opcode, funct, memtoreg, memwrite, branch, ALUsrc, regdst, r
   output reg [2:0] ALUcontrol;
   reg [1:0] ALUOp;
 
-  always @(posedge clk) begin
+  always @* begin
     $display("opcode %b", opcode);
     case (opcode)
       6'b000000: begin
