@@ -102,10 +102,9 @@ module ALU(a, b, ALUcontrol, out, zero);
     input [2:0] ALUcontrol;
     output [31:0] out;
     output zero;
-    assign zero = a == b;
 
     wire [31:0] inverted, bmux, aandb, aorb, sum, zerosum, muxc0, muxc1;
-
+    equals eq(a, b, zero);
     not_32 n(b, inverted);
 
     mux2_32 mux1(b, inverted, ALUcontrol[2], bmux);
