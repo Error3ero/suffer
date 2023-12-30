@@ -28,6 +28,8 @@ module decoder(opcode, memtoreg, memwrite, branch, ALUsrc, regdst, regwrite, ALU
   assign memtoreg = res[2];
   assign ALUop = res[1:0];
 
+  initial $display("%b", res);
+
 endmodule
 
 //module ALUDecoder(ALUop, funct, ALUcontrol);
