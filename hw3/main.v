@@ -12,7 +12,7 @@ module main();
     assign b[3] = 0;
     assign b[2] = 0;
     assign b[1] = 0;
-    assign b[0] = 1;
+    assign b[0] = 0;
 
   initial $display("%b", a == b);
 endmodule
