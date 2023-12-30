@@ -39,3 +39,70 @@ module mux2_5(d0, d1, a, out);
   output [4:0] out;
   assign out = a ? d1 : d0;
 endmodule
+
+module alu(a, b, control, out, zero);
+  input signed [31:0] a, b;
+  input [2:0] control;
+  output reg [31:0] out;
+  output reg zero;
+
+  reg [31:0] srcb;
+
+  always @(control or a or b) begin
+    if (control[2]) srcb = ~b + 1;
+    else srcb = b;
+
+    case (control[1:0])
+      2'b00: out = a & srcb;
+      2'b01: out = a | srcb;
+      2'b10: out = a + srcb;
+      2'b11: begin
+        if (control[2]) begin
+          if (a < b) out = 1;
+          else out = 0;
+        end
+      end
+    endcase
+
+    if (a == b) zero = 1;
+    else zero = 0;
+  end
+endmodule
+
+module and_gate(a, b, out);
+  input wire a, b;
+  output wire out;
+
+  wire nand_out;
+
+  nand_gate nand_gate1(a, b, nand_out);
+  not_gate not_gate1(nand_out, out);
+endmodule
+
+module nand_gate(a, b, out);
+  input wire a, b;
+  output out;
+
+  supply1 pwr;
+  supply0 gnd;
+
+  wire nmos1_out;
+
+  pmos pmos1(out, pwr, a);
+  pmos pmos2(out, pwr, b);
+
+  nmos nmos1(nmos1_out, gnd, b);
+  nmos nmos2(out, nmos1_out, a);
+endmodule
+
+
+module not_gate(a, out);
+  input wire a;
+  output out;
+
+  supply1 pwr;
+  supply0 gnd;
+
+  pmos pmos1(out, pwr, a);
+  nmos nmos1(out, gnd, a);
+endmodule
