@@ -9,9 +9,9 @@ module main();
 
   initial begin
     #5;
-    clk = 0;
-    #5;
     clk = 1;
+    #5;
+    clk = 0;
         $display("memtoreg %b", memtoreg);
         $display("memwrite %b", memwrite);
         $display("branch %b", branch);
@@ -21,9 +21,9 @@ module main();
        // $display("aluop %b", ALUOp);
     opc = 6'b100011;
     #5;
-    clk = 0;
-    #5;
     clk = 1;
+    #5;
+    clk = 0;
         $display("memtoreg %b", memtoreg);
         $display("memwrite %b", memwrite);
         $display("branch %b", branch);
@@ -33,17 +33,26 @@ module main();
         //$display("aluop %b", ALUOp);
     opc = 6'b101011;
     #5;
+    clk = 1;
+    #5;
     clk = 0;
+            $display("memtoreg %b", memtoreg);
+            $display("memwrite %b", memwrite);
+            $display("branch %b", branch);
+            $display("ALUsrc %b", ALUsrc);
+            $display("regdst %b", regdst);
+            $display("regwrite %b", regwrite);
+    opc = 6'b000100;
     #5;
     clk = 1;
-    opc = 6'b000100;
-        $display("memtoreg %b", memtoreg);
-        $display("memwrite %b", memwrite);
-        $display("branch %b", branch);
-        $display("ALUsrc %b", ALUsrc);
-        $display("regdst %b", regdst);
-        $display("regwrite %b", regwrite);
-       // $display("aluop %b", ALUOp);
+    #5;
+    clk = 0;
+            $display("memtoreg %b", memtoreg);
+            $display("memwrite %b", memwrite);
+            $display("branch %b", branch);
+            $display("ALUsrc %b", ALUsrc);
+            $display("regdst %b", regdst);
+            $display("regwrite %b", regwrite);
   end
 endmodule
 
