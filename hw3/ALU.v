@@ -114,8 +114,9 @@ module ALU(a, b, ALUcontrol, out, zero);
     and_32 and1(a, bmux, aandb);
     or_32 or1(a, bmux, aorb);
 
+    assign trash = ALUcontrol[1];
     mux2_32 mux2(aorb, sum, ALUcontrol[1], muxc0);
-    mux2_32 mux3(aandb, zerosum, ALUcontrol[1], muxc1);
+    mux2_32 mux3(aandb, zerosum, trash, muxc1);
 
     mux2_32 mux4(muxc0, muxc1, ALUcontrol[0], out);
 
