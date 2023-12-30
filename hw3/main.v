@@ -16,6 +16,7 @@ module main();
 
 
   initial begin
+    $display("sadwefwe %b", ponos);
     $display("ptidurok   %b", opc == 6'b000000);
     $display("%b, %b, %b, %b, %b, %b, %b", memtoreg, memwrite, branch, ALUsrc, regdst, regwrite, ALUop);
   end
