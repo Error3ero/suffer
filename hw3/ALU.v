@@ -115,8 +115,9 @@ module ALU(a, b, ALUcontrol, out, zero);
     or_32 or1(a, bmux, aorb);
 
     mux2_32 mux2(aorb, sum, ALUcontrol[1], muxc0);
-    and_gate ad(zero, zero, trash);
     mux2_32 mux3(aandb, zerosum, ALUcontrol[1], muxc1);
+        mux2_32 mux3(aandb, zerosum, ALUcontrol[1], muxc1);
+
     mux2_32 mux4(muxc0, muxc1, ALUcontrol[0], out);
 
     initial begin
