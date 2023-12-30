@@ -24,7 +24,7 @@ module control(clk, opcode, funct, memtoreg, memwrite, branch, ALUsrc, regdst, r
           6'b101010 : ALUcontrol = 3'b111;
         endcase
       end
-      6'b100011: begin
+      6'b110001: begin
         memtoreg = 1;
         memwrite = 0;
         branch = 0;
@@ -34,7 +34,7 @@ module control(clk, opcode, funct, memtoreg, memwrite, branch, ALUsrc, regdst, r
         ALUOp = 2'b00;
         ALUcontrol = 3'b010;
       end
-      6'b101011: begin
+      6'b110101: begin
         memtoreg = 1'bx;
         memwrite = 1;
         branch = 0;
@@ -44,7 +44,7 @@ module control(clk, opcode, funct, memtoreg, memwrite, branch, ALUsrc, regdst, r
         ALUOp = 2'b00;
         ALUcontrol = 3'b010;
       end
-      6'b000100: begin
+      6'b001000: begin
         memtoreg = 1'bx;
         memwrite = 0;
         branch = 1;
