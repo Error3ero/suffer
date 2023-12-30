@@ -5,7 +5,7 @@ module main();
   reg [31:0] a = 214;
   reg [31:0] b = 21455;
   wire [31:0] res;
-  reg [2:0] control = 3'b010;
+  reg [2:0] control = 3'b110;
   wire zero;
 
   ALU alu1(a, b, control, res, zero);
