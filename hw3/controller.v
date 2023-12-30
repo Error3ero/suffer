@@ -1,6 +1,6 @@
 // TODO: redo
 module decoder(opcode, memtoreg, memwrite, branch, ALUsrc, regdst, regwrite, ALUop);
-  input [5:0] opcode;
+  input reg [5:0] opcode;
   output memtoreg, memwrite, branch, ALUsrc, regdst, regwrite;
   output [1:0] ALUop;
 
@@ -20,16 +20,20 @@ module decoder(opcode, memtoreg, memwrite, branch, ALUsrc, regdst, regwrite, ALU
 
   assign res = opcode == 6'b000000 ? rtype : opcode == 6'b100011 ? lw : opcode == 6'b101011 ? sw : opcode == 6'b000100 ? beq : 8'bxxxxxxxx;
 
-  assign regwrite = opcode == 6'b000000 ? 1 : opcode == 6'b100011 ? 1 : opcode == 6'b101011 ? 0 : opcode == 6'b000100 ? 0 : 1'bx;
-  assign regdst = opcode == 6'b000000 ? 1 : opcode == 6'b100011 ? 0 : 1'bx;
-  assign ALUsrc = opcode == 6'b000000 ? 0 : opcode == 6'b100011 ? 1 : opcode == 6'b101011 ? 1 : opcode == 6'b000100 ? 0 : 1'bx;
-  assign branch = opcode == 6'b000000 ? 0 : opcode == 6'b100011 ? 0 : opcode == 6'b101011 ? 0 : opcode == 6'b000100 ? 1 : 1'bx;
+  assign regwrite = res[7];
+  assign regdst = res[6];
+  assign ALUsrc = res[5];
+  assign branch = res[4];
   assign memwrite = res[3];
   assign memtoreg = res[2];
   assign ALUop = res[1:0];
+  initial begin
+    $display("eladwlehfhwef %b" , res);
+    $display("eladwlehfhwef %b" , res);
+    $display("eladwlehfhwef %b" , res);
 
-  initial $display("%b", res);
 
+  end
 endmodule
 
 //module ALUDecoder(ALUop, funct, ALUcontrol);
