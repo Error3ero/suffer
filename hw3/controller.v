@@ -20,25 +20,14 @@ module decoder(opcode, memtoreg, memwrite, branch, ALUsrc, regdst, regwrite, ALU
 
   assign res = opcode == 6'b000000 ? rtype : opcode == 6'b100011 ? lw : opcode == 6'b101011 ? sw : opcode == 6'b000100 ? beq : 8'bxxxxxxxx;
 
-  assign regwrite = res[7];
-  assign regdst = res[6];
-  assign ALUsrc = res[5];
-  assign branch = res[4];
+  assign regwrite = opcode == 6'b000000 ? 1 : opcode == 6'b100011 ? 1 : opcode == 6'b101011 ? 0 : opcode == 6'b000100 ? 0 : 1'bx;
+  assign regdst = opcode == 6'b000000 ? 1 : opcode == 6'b100011 ? 0 : 1'bx;
+  assign ALUsrc = opcode == 6'b000000 ? 0 : opcode == 6'b100011 ? 1 : opcode == 6'b101011 ? 1 : opcode == 6'b000100 ? 0 : 1'bx;
+  assign branch = opcode == 6'b000000 ? 0 : opcode == 6'b100011 ? 0 : opcode == 6'b101011 ? 0 : opcode == 6'b000100 ? 1 : 1'bx;
   assign memwrite = res[3];
   assign memtoreg = res[2];
   assign ALUop = res[1:0];
-  initial begin
-    #10
-    $display("eladwlehfhwef %b" , res);
-    $display("eladw %b" , regwrite);
-    $display("el %b" , regdst);
-    $display("ela %b" , ALUsrc);
-    $display("ela %b" , branch);
-    $display("ela %b" , ALUop);
-    $display("ela %b" , memtoreg);
 
-
-  end
 endmodule
 
 //module ALUDecoder(ALUop, funct, ALUcontrol);
