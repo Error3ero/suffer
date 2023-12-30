@@ -1,40 +1,40 @@
 // TODO: redo
-module decoder(opcode, memtoreg, memwrite, branch, ALUsrc, regdst, regwrite, ALUop);
-  input reg [5:0] opcode;
-  output memtoreg, memwrite, branch, ALUsrc, regdst, regwrite;
-  output [1:0] ALUop;
-
-  wire [7:0] res;
-
-  reg [7:0] rtyper = 8'b11000010;
-  reg [7:0] lwr = 8'b10100100;
-  reg [7:0] swr = 8'b0x101x00;
-  reg [7:0] beqr = 8'b0x010x01;
-
-  wire [7:0] rtype, lw, sw, beq;
-
-  regToWire8 rtw1(rtyper, rtype);
-  regToWire8 rtw2(lwr ,lw);
-  regToWire8 rtw3(swr, sw);
-  regToWire8 rtw4(beqr, beq);
-
-  assign res = opcode == 6'b000000 ? rtype : opcode == 6'b100011 ? lw : opcode == 6'b101011 ? sw : opcode == 6'b000100 ? beq : 8'bxxxxxxxx;
-
-  assign regwrite = res[7];
-  assign regdst = res[6];
-  assign ALUsrc = res[5];
-  assign branch = res[4];
-  assign memwrite = res[3];
-  assign memtoreg = res[2];
-  assign ALUop = res[1:0];
-  initial begin
-    $display("eladwlehfhwef %b" , res);
-    $display("eladwlehfhwef %b" , res);
-    $display("eladwlehfhwef %b" , res);
-
-
-  end
-endmodule
+//module decoder(opcode, memtoreg, memwrite, branch, ALUsrc, regdst, regwrite, ALUop);
+//  input [5:0] opcode;
+//  output memtoreg, memwrite, branch, ALUsrc, regdst, regwrite;
+//  output [1:0] ALUop;
+//
+//  wire [7:0] res;
+//
+//  reg [7:0] rtyper = 8'b11000010;
+//  reg [7:0] lwr = 8'b10100100;
+//  reg [7:0] swr = 8'b0x101x00;
+//  reg [7:0] beqr = 8'b0x010x01;
+//
+//  wire [7:0] rtype, lw, sw, beq;
+//
+//  regToWire8 rtw1(rtyper, rtype);
+//  regToWire8 rtw2(lwr ,lw);
+//  regToWire8 rtw3(swr, sw);
+//  regToWire8 rtw4(beqr, beq);
+//
+//  assign res = opcode == 6'b000000 ? rtype : opcode == 6'b100011 ? lw : opcode == 6'b101011 ? sw : opcode == 6'b000100 ? beq : 8'bxxxxxxxx;
+//
+//  assign regwrite = res[7];
+//  assign regdst = res[6];
+//  assign ALUsrc = res[5];
+//  assign branch = res[4];
+//  assign memwrite = res[3];
+//  assign memtoreg = res[2];
+//  assign ALUop = res[1:0];
+//  initial begin
+//    $display("eladwlehfhwef %b" , res);
+//    $display("eladwlehfhwef %b" , res);
+//    $display("eladwlehfhwef %b" , res);
+//
+//
+//  end
+//endmodule
 
 //module ALUDecoder(ALUop, funct, ALUcontrol);
 //    input [1:0] ALUop;
@@ -104,6 +104,23 @@ endmodule
 //    ALUDecoder a(ALUop, funct, ALUcontrol);
 //endmodule
 //
+
+module control(clk, opcode, funct, memtoreg, memwrite, branch, ALUsrc, regdst, regwrite, ALUcontrol);
+  input clk;
+  input clk;
+  input [5:0] opcode;
+  input [5:0] funct;
+  output memtoreg, memwrite, branch, ALUsrc, regdst, regwrite;
+  output [2:0] ALUcontrol;
+
+  always @(posedge clk) begin
+
+
+  end
+endmodule
+
+
+
 module regToWire8(a, out);
   input [7:0] a;
   output [7:0] out;
