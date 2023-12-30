@@ -122,6 +122,7 @@ module ALU(a, b, ALUcontrol, out, zero);
       $display("or %b", aorb);
       $display("and %b", aandb);
       $display("zerosum %b", zerosum);
+      $display("ALUcontrol %b", ALUcontrol[1]);
 
       $display("muxc1 %b", muxc1);
       $display("muxc0 %b", muxc0);
