@@ -1,5 +1,5 @@
 `include "controller.v"
-//`include "util.v"
+`include "util.v"
 `include "ALU.v"
 module main();
   reg [31:0] a = 4;
