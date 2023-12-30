@@ -116,8 +116,8 @@ module ALU(a, b, ALUcontrol, out, zero);
 
     assign trash = ALUcontrol[1];
     mux2_32 mux2(aorb, sum, ALUcontrol[1], muxc0);
-    mux2_32 mux3(aandb, zerosum, trash, muxc1);
-
+//    mux2_32 mux3(aandb, zerosum, trash, muxc1);
+    assign muxc1 = trash ? zerosum : aandb;
     mux2_32 mux4(muxc0, muxc1, ALUcontrol[0], out);
 
     initial begin
