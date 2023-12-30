@@ -30,7 +30,7 @@ module mips_cpu(clk, pc, pc_new, instruction_memory_a, instruction_memory_rd, da
   wire memtoreg, memwrite, branch, ALUsrc, regdst, regwrite, zero, PCSrc;
   wire [2:0] ALUControl;
   wire [4:0] WriteReg;
-  wire [31:0] Signimm, SrcB, ALUResult, Result, toAdder, PCPlus4, PCBranch;
+  wire [31:0] Signimm, SrcA, SrcB, ALUResult, Result, toAdder, PCPlus4, PCBranch;
 
   control controller(clk, instruction_memory_rd[31:26], instruction_memory_rd[5:0], memtoreg, memwrite, branch, ALUsrc, regdst, regwrite, ALUControl);
   assign register_we3 = regwrite;
@@ -45,8 +45,9 @@ module mips_cpu(clk, pc, pc_new, instruction_memory_a, instruction_memory_rd, da
   mux2_32 toSrcB(register_rd2, Signimm, ALUsrc, SrcB);
 
   assign data_memory_wd = register_rd2;
+  assign SrcA = register_rd1;
 
-  ALU alu1(register_rd1, SrcB, ALUControl, ALUResult, zero);
+  ALU alu1(SrcA, SrcB, ALUControl, ALUResult, zero);
   assign data_memory_a = ALUResult;
 
   mux2_32 toResult(ALUResult, data_memory_rd, memtoreg, Result);
