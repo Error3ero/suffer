@@ -2,8 +2,8 @@
 `include "util.v"
 `include "ALU.v"
 module main();
-  integer a = 214;
-  integer b = 21455;
+  reg [31:0] a = 214;
+  reg [31:0] b = 21455;
   wire [31:0] res;
   reg [2:0] control;
   wire zero;
