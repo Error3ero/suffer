@@ -18,7 +18,7 @@ module control(opcode, funct, MemtoReg, MemWrite, Branch, ALUSrc, RegDst, RegWri
         mtr = 0;
         ALUop = 2'b10;
       end
-      6'b100011: begin
+      6'b110001: begin
         rw = 1;
         rd = 0;
         asrc = 1;
@@ -27,7 +27,7 @@ module control(opcode, funct, MemtoReg, MemWrite, Branch, ALUSrc, RegDst, RegWri
         mtr = 1;
         ALUop = 2'b00;
       end
-      6'b101011: begin
+      6'b110101: begin
         rw = 0;
         rd = 0;
         asrc = 1;
@@ -36,7 +36,7 @@ module control(opcode, funct, MemtoReg, MemWrite, Branch, ALUSrc, RegDst, RegWri
         mtr = 0;
         ALUop = 2'b00;
       end
-      6'b000100: begin
+      6'b001000: begin
         rw = 0;
         rd = 0;
         asrc = 0;
