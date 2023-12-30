@@ -76,7 +76,7 @@ module mips_cpu(clk, pc, pc_new, instruction_memory_a, instruction_memory_rd, da
   adder adder1(pc, 4, PCPlus4);
   shl_2 shl(Signimm, sheld);
 
-  adder adder2(PCPlus4, sheld, PCbranch)
+  adder adder2(PCPlus4, sheld, PCbranch);
   mux2_32 mux3(PCPlus4, PCbranch, PCsrc, pc_new);
 
 
