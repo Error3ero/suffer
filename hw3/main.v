@@ -2,20 +2,27 @@
 //`include "util.v"
 module main();
   reg [5:0] opc = 6'b000000;
-
-  wire memtoreg, memwrite, branch, ALUsrc, regdst, regwrite;
-  wire [1:0] ALUop;
-  wire [3:0] ponos;
-  assign ponos[3] = 1;
-  assign ponos[2] = 0;
-  assign ponos[1] = 1;
-  assign ponos[0] = 0;
-
-
-
+  wire opcode, funct, memtoreg, memwrite, branch, ALUsrc, regdst, regwrite;
+  wire [2:0] ALUcontrol;
+  reg clk;
+  control c1(opc, opcode, funct, memtoreg, memwrite, branch, ALUsrc, regdst, regwrite, ALUcontrol);
 
   initial begin
-    $display("sadwefwe %b", ponos == 4'b1010);
+    #5;
+    clk = 0;
+    #5;
+    clk = 1;
+    opcode = 6'b1000101;
+    #5;
+    clk = 0;
+    #5;
+    clk = 1;
+    opcode = 6'b1010101;
+    #5;
+    clk = 0;
+    #5;
+    clk = 1;
+    opcode = 6'b000100;
   end
 endmodule
 
