@@ -32,7 +32,7 @@ module mips_cpu(clk, pc, pc_new, instruction_memory_a, instruction_memory_rd, da
   wire [4:0] WriteReg;
   wire [31:0] Signimm, SrcB, ALUResult, Result, toAdder, PCPlus4, PCBranch;
 
-  control controller(instruction_memory_rd[31:26], instruction_memory_rd[5:0], memtoreg, memwrite, branch, ALUsrc, regdst, regwrite, ALUControl);
+  control controller(clk, instruction_memory_rd[31:26], instruction_memory_rd[5:0], memtoreg, memwrite, branch, ALUsrc, regdst, regwrite, ALUControl);
   assign register_we3 = regwrite;
   assign data_memory_we = memwrite;
 
@@ -59,11 +59,11 @@ module mips_cpu(clk, pc, pc_new, instruction_memory_a, instruction_memory_rd, da
   adder adder1(toAdder, PCPlus4, PCBranch);
   mux2_32 toPC(PCPlus4, PCBranch, PCSrc, pc_new);
 
-  always @ (posedge clk) begin
-    $display("pc %b", pc);
-    $display("pc_new %b", pc_new);
-    $display("instruction_memory_rd[31:26] %b", instruction_memory_rd[31:26]);
-    $display("%b, %b, %b %b, %b, %b, %b", memtoreg, memwrite, branch, ALUsrc, regdst, regwrite, ALUControl);
-  end
+//  always @ (posedge clk) begin
+//    $display("pc %b", pc);
+//    $display("pc_new %b", pc_new);
+//    $display("instruction_memory_rd[31:26] %b", instruction_memory_rd[31:26]);
+//    $display("%b, %b, %b %b, %b, %b, %b", memtoreg, memwrite, branch, ALUsrc, regdst, regwrite, ALUControl);
+//  end
   // TODO: implementation
 endmodule

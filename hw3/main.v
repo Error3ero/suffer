@@ -2,7 +2,8 @@
 //`include "util.v"
 module main();
   reg [5:0] opc = 6'b000000;
-  wire funct, memtoreg, memwrite, branch, ALUsrc, regdst, regwrite;
+  reg [5:0] funct;
+  wire memtoreg, memwrite, branch, ALUsrc, regdst, regwrite;
   wire [2:0] ALUcontrol;
   reg clk;
   control c1(clk, opc, funct, memtoreg, memwrite, branch, ALUsrc, regdst, regwrite, ALUcontrol);
