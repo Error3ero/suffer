@@ -5,17 +5,12 @@ module main();
   reg [31:0] a = 214;
   reg [31:0] b = 21455;
   wire [31:0] res;
-  reg [2:0] control;
+  reg [2:0] control = 3'b010;
   wire zero;
 
   ALU alu1(a, b, control, res, zero);
 
   initial begin
-    control = 3'b010;
-    $display("%b", res);
-    $display("%b", zero);
-
-    control = 3'b110;
     $display("%b", res);
     $display("%b", zero);
   end

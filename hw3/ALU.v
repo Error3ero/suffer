@@ -117,5 +117,11 @@ module ALU(a, b, ALUcontrol, out, zero);
     mux2_32 mux3(aandb, zerosum, ALUcontrol[1], muxc1);
     mux2_32 mux4(muxc0, muxc1, ALUcontrol[0], out);
 
-    always @* $display("%b", zero);
+    initial begin
+      $display("sum %b", sum);
+      $display("or %b", aorb);
+      $display("and %b", aandb);
+
+
+    end
 endmodule
