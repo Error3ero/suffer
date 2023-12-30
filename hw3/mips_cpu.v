@@ -82,6 +82,7 @@ module mips_cpu(clk, pc, pc_new, instruction_memory_a, instruction_memory_rd, da
   always @ (posedge clk) begin
     $display("opcode %b", opcode);
     $display("funct %b", funct);
+    $display("%b, %b, %b, %b, %b, %b, %b", MemtoReg, MemWrite, Branch, ALUSrc, RegDst, RegWrite, ALUControl);
   end
   // TODO: debug
 endmodule
