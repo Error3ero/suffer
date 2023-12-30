@@ -107,7 +107,6 @@
 
 module control(clk, opcode, funct, memtoreg, memwrite, branch, ALUsrc, regdst, regwrite, ALUcontrol);
   input clk;
-  input clk;
   input [5:0] opcode;
   input [5:0] funct;
   output memtoreg, memwrite, branch, ALUsrc, regdst, regwrite;
