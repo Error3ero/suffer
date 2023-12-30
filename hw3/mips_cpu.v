@@ -32,7 +32,7 @@ module mips_cpu(clk, pc, pc_new, instruction_memory_a, instruction_memory_rd, da
   wire [4:0] WriteReg;
   wire [31:0] Signimm, SrcB, ALUResult, Result, toAdder, PCPlus4, PCBranch;
 
-  control controller(clk, instruction_memory_rd[31:26], instruction_memory_rd[5:0], memtoreg, memwrite, branch, ALUsrc, regdst, regwrite, ALUControl);
+  control controller(clk, instruction_memory_rd[26:31], instruction_memory_rd[0:5], memtoreg, memwrite, branch, ALUsrc, regdst, regwrite, ALUControl);
   assign register_we3 = regwrite;
   assign data_memory_we = memwrite;
 
