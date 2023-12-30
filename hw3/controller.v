@@ -152,13 +152,7 @@ module control(clk, opcode, funct, memtoreg, memwrite, branch, ALUsrc, regdst, r
         ALUOp = 2'b01;
       end
     endcase
-    $display("memtoreg %b", memtoreg);
-    $display("memwrite %b", memwrite);
-    $display("branch %b", branch);
-    $display("ALUsrc %b", ALUsrc);
-    $display("regdst %b", regdst);
-    $display("regwrite %b", regwrite);
-    $display("aluop %b", ALUOp);
+
   end
 endmodule
 
