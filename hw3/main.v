@@ -14,6 +14,9 @@ module main();
     assign b[1] = 0;
     assign b[0] = 0;
 
-  initial $display("%b", a == b);
+    wire c;
+    assign c = a == b;
+
+  initial $display("%b", c);
 endmodule
 
