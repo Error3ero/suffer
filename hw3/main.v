@@ -1,59 +1,12 @@
 `include "controller.v"
 //`include "util.v"
+`include "ALU.v"
 module main();
-  reg [5:0] opc = 6'b000000;
-  reg [5:0] funct;
-  wire memtoreg, memwrite, branch, ALUsrc, regdst, regwrite;
-  wire [2:0] ALUcontrol;
-  reg clk;
-  control c1(clk, opc, funct, memtoreg, memwrite, branch, ALUsrc, regdst, regwrite, ALUcontrol);
+  reg [31:0] a = 4;
+  reg [31:0] b = 71;
+  wire [31:0] c;
+  and_32 we(a, b, c);
 
-  initial begin
-    #5;
-    clk = 1;
-    #5;
-    clk = 0;
-        $display("memtoreg %b", memtoreg);
-        $display("memwrite %b", memwrite);
-        $display("branch %b", branch);
-        $display("ALUsrc %b", ALUsrc);
-        $display("regdst %b", regdst);
-        $display("regwrite %b", regwrite);
-       // $display("aluop %b", ALUOp);
-    opc = 6'b100011;
-    #5;
-    clk = 1;
-    #5;
-    clk = 0;
-        $display("memtoreg %b", memtoreg);
-        $display("memwrite %b", memwrite);
-        $display("branch %b", branch);
-        $display("ALUsrc %b", ALUsrc);
-        $display("regdst %b", regdst);
-        $display("regwrite %b", regwrite);
-        //$display("aluop %b", ALUOp);
-    opc = 6'b101011;
-    #5;
-    clk = 1;
-    #5;
-    clk = 0;
-            $display("memtoreg %b", memtoreg);
-            $display("memwrite %b", memwrite);
-            $display("branch %b", branch);
-            $display("ALUsrc %b", ALUsrc);
-            $display("regdst %b", regdst);
-            $display("regwrite %b", regwrite);
-    opc = 6'b000100;
-    #5;
-    clk = 1;
-    #5;
-    clk = 0;
-            $display("memtoreg %b", memtoreg);
-            $display("memwrite %b", memwrite);
-            $display("branch %b", branch);
-            $display("ALUsrc %b", ALUsrc);
-            $display("regdst %b", regdst);
-            $display("regwrite %b", regwrite);
-  end
+  initial $display("%b", c);
 endmodule
 
