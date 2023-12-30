@@ -18,7 +18,7 @@ module main();
         $display("ALUsrc %b", ALUsrc);
         $display("regdst %b", regdst);
         $display("regwrite %b", regwrite);
-        $display("aluop %b", ALUOp);
+       // $display("aluop %b", ALUOp);
     opc = 6'b100011;
     #5;
     clk = 0;
@@ -30,7 +30,7 @@ module main();
         $display("ALUsrc %b", ALUsrc);
         $display("regdst %b", regdst);
         $display("regwrite %b", regwrite);
-        $display("aluop %b", ALUOp);
+        //$display("aluop %b", ALUOp);
     opc = 6'b101011;
     #5;
     clk = 0;
@@ -43,7 +43,7 @@ module main();
         $display("ALUsrc %b", ALUsrc);
         $display("regdst %b", regdst);
         $display("regwrite %b", regwrite);
-        $display("aluop %b", ALUOp);
+       // $display("aluop %b", ALUOp);
   end
 endmodule
 
