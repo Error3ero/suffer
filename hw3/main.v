@@ -2,11 +2,18 @@
 `include "util.v"
 `include "ALU.v"
 module main();
-  reg [31:0] a = 4;
-  reg [31:0] b = 71;
-  wire [31:0] c;
-  and_32 we(a, b, c);
+  wire [3:0] a;
+  assign a[3] = 0;
+  assign a[2] = 0;
+  assign a[1] = 0;
+  assign a[0] = 0;
 
-  initial $display("%b", c);
+  wire [3:0] b;
+    assign b[3] = 0;
+    assign b[2] = 0;
+    assign b[1] = 0;
+    assign b[0] = 1;
+
+  initial $display("%b", a == b);
 endmodule
 
