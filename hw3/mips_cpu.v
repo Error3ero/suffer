@@ -62,9 +62,9 @@ module mips_cpu(clk, pc, pc_new, instruction_memory_a, instruction_memory_rd, da
   always @ (posedge clk) begin
     $display("pc %b", pc);
     $display("pc_new %b", pc_new);
-    $display("pc+4, %b", PCPlus4);
-    $display("pcbranch %b", PCBranch);
     $display("pcsrc %b", PCSrc);
+    $display("zero, %b", zero);
+    $display("branch, %b", branch);
   end
   // TODO: implementation
 endmodule
