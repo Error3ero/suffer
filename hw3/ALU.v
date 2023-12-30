@@ -107,15 +107,15 @@ module ALU(a, b, ALUcontrol, out, zero);
     equals eq(a, b, zero);
     not_32 n(b, inverted);
 
-    mux2_321 mux1(b, inverted, ALUcontrol[2], bmux);
+    mux2_32 mux1(b, inverted, ALUcontrol[2], bmux);
     adder adder1(a, bmux, sum);
     zero_extend zero1(sum, zerosum);
     and_32 and1(a, bmux, aandb);
     or_32 or1(a, bmux, aorb);
 
-    mux2_322 mux2(aorb, sum, ALUcontrol[1], muxc0);
-    mux2_323 mux3(aandb, zerosum, ALUcontrol[1], muxc1);
-    mux2_324 mux4(muxc0, muxc1, ALUcontrol[0], out);
+    mux2_32 mux2(aorb, sum, ALUcontrol[1], muxc0);
+    mux2_32 mux3(aandb, zerosum, ALUcontrol[1], muxc1);
+    mux2_32 mux4(muxc0, muxc1, ALUcontrol[0], out);
 
     initial begin
       $display("sum %b", sum);
@@ -124,35 +124,8 @@ module ALU(a, b, ALUcontrol, out, zero);
       $display("zerosum %b", zerosum);
       $display("ALUcontrol %b", ALUcontrol[1]);
 
-      $display("muxc1 %b", muxc1);
       $display("muxc0 %b", muxc0);
+      $display("muxc1 %b", muxc1);
       $display("out %b", out);
-
-
     end
-endmodule
-
-module mux2_321(d0, d1, a, out);
-  input [31:0] d0, d1;
-  input a;
-  output [31:0] out;
-  assign out = a ? d1 : d0;
-endmodule
-module mux2_322(d0, d1, a, out);
-  input [31:0] d0, d1;
-  input a;
-  output [31:0] out;
-  assign out = a ? d1 : d0;
-endmodule
-module mux2_323(d0, d1, a, out);
-  input [31:0] d0, d1;
-  input a;
-  output [31:0] out;
-  assign out = a ? d1 : d0;
-endmodule
-module mux2_324(d0, d1, a, out);
-  input [31:0] d0, d1;
-  input a;
-  output [31:0] out;
-  assign out = a ? d1 : d0;
 endmodule
