@@ -80,7 +80,8 @@ module mips_cpu(clk, pc, pc_new, instruction_memory_a, instruction_memory_rd, da
   mux2_32 mux3(PCPlus4, PCbranch, PCsrc, pc_new);
 
   always @ (posedge clk) begin
-    $display("pc %b", pc);
+    $display("opcode %b", opcode);
+    $display("funct %b", funct);
   end
   // TODO: debug
 endmodule
