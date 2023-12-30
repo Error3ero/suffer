@@ -41,13 +41,8 @@ module instruction_memory(a, rd);
 
   // память заполняется двоичными данными из
   // файла intructions.dat
-  integer i;
   initial begin
     $readmemb("instructions.dat", ram);
-    $display("instr mem init");
-    for (i = 0; i < 64; i = i + 1) begin
-      $display("%b", ram[i]);
-    end
   end
 
   // чтение происходит из элемента массива по a / 4, т.к.
