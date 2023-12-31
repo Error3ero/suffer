@@ -7,6 +7,13 @@ module sign_extend(in, out);
   assign out = {{16{in[15]}}, in};
 endmodule
 
+module jump_extend(in, out);
+  input [25:0] in;
+  output [31:0] out;
+
+  assign out = {6'b000000, in};
+endmodule
+
 // модуль, который реализует побитовый сдвиг числа
 // влево на 2 бита
 module shl_2(in, out);
@@ -40,6 +47,13 @@ module mux2_5(d0, d1, a, out);
   assign out = a ? d1 : d0;
 endmodule
 
+module mux2_1(d0, d1, a, out);
+  input d0, d1;
+  input a;
+  output out;
+  assign out = a ? d1 : d0;
+endmodule
+
 module alu(a, b, control, out, zero);
   input signed [31:0] a, b;
   input [2:0] control;
@@ -64,7 +78,7 @@ module alu(a, b, control, out, zero);
       end
     endcase
 
-    if (a == b) zero = 1;
+    if (out == 0) zero = 1;
     else zero = 0;
   end
 endmodule

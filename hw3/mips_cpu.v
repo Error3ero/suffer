@@ -33,19 +33,19 @@ module mips_cpu(clk, pc, pc_new, instruction_memory_a, instruction_memory_rd, da
   wire [4:0] wr1 = instruction_memory_rd[20:16];
   wire [4:0] wr2 = instruction_memory_rd[15:11];
   wire [15:0] imm = instruction_memory_rd[15:0];
+  wire [25:0] addr = instruction_memory_rd[25:0];
 
-  wire MemtoReg, MemWrite, Branch, ALUSrc, RegDst, RegWrite;
+  wire MemtoReg, MemWrite, BranchN, BranchE, ALUSrc, RegDst, RegWrite, Jump, Jal, Jr,;
   wire [2:0] ALUControl;
 
-  control control1(opcode, funct, MemtoReg, MemWrite, Branch, ALUSrc, RegDst, RegWrite, ALUControl);
+  control control1(opcode, funct, MemtoReg, MemWrite, BranchN, BranchE, ALUSrc, RegDst, RegWrite, Jump, Jal, Jr, ALUControl);
 
   assign register_a1 = r1;
   assign register_a2 = r2;
 
   wire [4:0] WriteReg;
   mux2_5 mux0(wr1, wr2, RegDst, WriteReg);
-
-  assign register_a3 = WriteReg;
+  mux2_5 mux1(WriteReg, 5'b11111, Jal, register_a3);
 
   wire [31:0] Signimm;
   sign_extend se(imm, Signimm);
@@ -53,7 +53,7 @@ module mips_cpu(clk, pc, pc_new, instruction_memory_a, instruction_memory_rd, da
   wire [31:0] SrcA = register_rd1;
   wire [31:0] SrcB;
 
-  mux2_32 mux1(register_rd2, Signimm, ALUSrc, SrcB);
+  mux2_32 mux2(register_rd2, Signimm, ALUSrc, SrcB);
 
   wire [31:0] ALUresult;
   wire zero;
@@ -64,25 +64,41 @@ module mips_cpu(clk, pc, pc_new, instruction_memory_a, instruction_memory_rd, da
   assign data_memory_wd = register_rd2;
   assign data_memory_we = MemWrite;
 
-  wire [31:0] Result;
-  mux2_32 mux2(ALUresult, data_memory_rd, MemtoReg, Result);
-
-  assign register_wd3 = Result;
-
-  wire PCsrc;
-  and_gate and1(Branch, zero, PCsrc);
-
   wire [31:0] PCPlus4, sheld, PCbranch;
   adder adder1(pc, 4, PCPlus4);
-  shl_2 shl(Signimm, sheld);
-
+  shl_2 shl1(Signimm, sheld);
   adder adder2(PCPlus4, sheld, PCbranch);
-  mux2_32 mux3(PCPlus4, PCbranch, PCsrc, pc_new);
+
+  wire [31:0] Result;
+  mux2_32 mux3(ALUresult, data_memory_rd, MemtoReg, Result);
+  mux2_32 mux4(Result, PCPlus4, Jal, register_wd3);
+
+  wire branch;
+  mux2_1 mux5(BranchN, BranchE, zero, branch);
+
+  wire zeront = !zero;
+
+  wire right;
+  mux2_1 mux6(zeront, zero, BranchE, right);
+
+  wire PCsrc;
+  and_gate and1(branch, right, PCsrc);
+
+  wire [31:0] tmp, jmp, jumpExt;
+  mux2_32 mux7(PCPlus4, PCbranch, PCsrc, tmp);
+
+  jump_extend jump1(addr, jmp);
+  shl_2 shl2(jmp, jumpExt);
+  wire [31:0] tmPc;
+
+  mux2_32 mux8(tmp, jumpExt, Jump, tmPc);
+  mux2_32 mux9(tmPc, SrcA, Jr, pc_new);
 
   always @ (posedge clk) begin
     $display("opcode %b", opcode);
     $display("funct %b", funct);
     $display("%b, %b, %b, %b, %b, %b, %b", MemtoReg, MemWrite, Branch, ALUSrc, RegDst, RegWrite, ALUControl);
+    $display();
   end
-  // TODO: debug
+  // TODO: reread statement-_-
 endmodule
