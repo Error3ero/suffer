@@ -94,11 +94,5 @@ module mips_cpu(clk, pc, pc_new, instruction_memory_a, instruction_memory_rd, da
   mux2_32 mux8(tmp, jumpExt, Jump, tmPc);
   mux2_32 mux9(tmPc, SrcA, Jr, pc_new);
 
-  always @ (posedge clk) begin
-    $display("opcode %b", opcode);
-    $display("funct %b", funct);
-    $display("%b, %b, %b, %b, %b, %b, %b", MemtoReg, MemWrite, Branch, ALUSrc, RegDst, RegWrite, ALUControl);
-    $display();
-  end
   // TODO: reread statement-_-
 endmodule
