@@ -77,7 +77,7 @@ module control(opcode, funct, MemtoReg, MemWrite, BranchN, BranchE, ALUSrc, RegD
       6'b001000: begin
         rw = 1;
         rd = 0;
-        asrc = 0;
+        asrc = 1;
         brn = 0;
         bre = 0;
         mw = 0;
