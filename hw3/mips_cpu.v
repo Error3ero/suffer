@@ -94,5 +94,8 @@ module mips_cpu(clk, pc, pc_new, instruction_memory_a, instruction_memory_rd, da
   mux2_32 mux8(tmp, jumpExt, Jump, tmPc);
   mux2_32 mux9(tmPc, SrcA, Jr, pc_new);
 
+  always @ (posedge clk) begin
+    $display("instruction_memory_rd %b", instruction_memory_rd);
+  end
   // TODO: reread statement-_-
 endmodule
