@@ -53,7 +53,7 @@ module cpu_test();
   reg [31:0] i_counter, reg_counter, mem_counter;
   initial begin
     // Выполняем 30 тактов
-    for (i_counter = 0; i_counter < 30; i_counter = i_counter + 1) begin
+    for (i_counter = 0; i_counter < 1000; i_counter = i_counter + 1) begin
       #5
       clk = 1;
       #5
