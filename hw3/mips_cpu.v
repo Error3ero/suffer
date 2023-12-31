@@ -99,6 +99,7 @@ module mips_cpu(clk, pc, pc_new, instruction_memory_a, instruction_memory_rd, da
     $display("%b, %b, %b, %b, %b, %b, %b, %b, %b, %b, %b", MemtoReg, MemWrite, BranchN, BranchE, ALUSrc, RegDst, RegWrite, Jump, Jal, Jr, ALUControl);
     $display("register_wd3 %b", register_wd3);
     $display("register_we3 %b", register_we3);
+    $display("register_rd2", register_rd2);
     $display("Result %b", Result);
     $display("ALUresult %b", ALUresult);
     $display("SrcA %b", SrcA);
