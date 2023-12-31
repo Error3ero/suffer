@@ -101,8 +101,8 @@ module mips_cpu(clk, pc, pc_new, instruction_memory_a, instruction_memory_rd, da
     $display("register_we3 %b", register_we3);
     $display("Result %b", Result);
     $display("ALUresult %b", ALUresult);
-    $display("SrcA %b" SrcA);
-    $display("SrcB %b" SrcB);
+    $display("SrcA %b", SrcA);
+    $display("SrcB %b", SrcB);
   end
   // TODO: reread statement-_-
 endmodule
