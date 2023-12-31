@@ -35,7 +35,7 @@ module mips_cpu(clk, pc, pc_new, instruction_memory_a, instruction_memory_rd, da
   wire [15:0] imm = instruction_memory_rd[15:0];
   wire [25:0] addr = instruction_memory_rd[25:0];
 
-  wire MemtoReg, MemWrite, BranchN, BranchE, ALUSrc, RegDst, RegWrite, Jump, Jal, Jr,;
+  wire MemtoReg, MemWrite, BranchN, BranchE, ALUSrc, RegDst, RegWrite, Jump, Jal, Jr;
   wire [2:0] ALUControl;
 
   control control1(opcode, funct, MemtoReg, MemWrite, BranchN, BranchE, ALUSrc, RegDst, RegWrite, Jump, Jal, Jr, ALUControl);
