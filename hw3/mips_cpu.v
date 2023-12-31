@@ -95,8 +95,10 @@ module mips_cpu(clk, pc, pc_new, instruction_memory_a, instruction_memory_rd, da
   mux2_32 mux9(tmPc, SrcA, Jr, pc_new);
 
   always @ (posedge clk) begin
-    $display("instruction_memory_rd %b", instruction_memory_rd);
-    $display("%b, %b, %b, %b, %b, %b, %b, %b, %b, %b, %b", MemtoReg, MemWrite, BranchN, BranchE, ALUSrc, RegDst, RegWrite, Jump, Jal, Jr, ALUControl);
+    //$display("instruction_memory_rd %b", instruction_memory_rd);
+    //$display("%b, %b, %b, %b, %b, %b, %b, %b, %b, %b, %b", MemtoReg, MemWrite, BranchN, BranchE, ALUSrc, RegDst, RegWrite, Jump, Jal, Jr, ALUControl);
+    $display("register_wd3 %b", register_wd3);
+    $display("register_we3 %b", register_we3);
   end
   // TODO: reread statement-_-
 endmodule
