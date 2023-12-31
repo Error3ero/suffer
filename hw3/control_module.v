@@ -52,8 +52,8 @@ module control(opcode, funct, MemtoReg, MemWrite, BranchN, BranchE, ALUSrc, RegD
         rw = 0;
         rd = 0;
         asrc = 0;
-        brn = 1;
-        bre = 0;
+        brn = 0;
+        bre = 1;
         mw = 0;
         mtr = 0;
         jmp = 0;
