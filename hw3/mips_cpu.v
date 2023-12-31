@@ -40,10 +40,10 @@ module mips_cpu(clk, pc, pc_new, instruction_memory_a, instruction_memory_rd, da
 
   control control1(opcode, funct, MemtoReg, MemWrite, BranchN, BranchE, ALUSrc, RegDst, RegWrite, Jump, Jal, Jr, ALUControl);
 
+  wire [4:0] WriteReg;
   assign register_a1 = r1;
   assign register_a2 = r2;
 
-  wire [4:0] WriteReg;
   mux2_5 mux0(wr1, wr2, RegDst, WriteReg);
   mux2_5 mux1(WriteReg, 5'b11111, Jal, register_a3);
 
@@ -101,6 +101,8 @@ module mips_cpu(clk, pc, pc_new, instruction_memory_a, instruction_memory_rd, da
     $display("register_we3 %b", register_we3);
     $display("Result %b", Result);
     $display("ALUresult %b", ALUresult);
+    $display("SrcA %b" SrcA);
+    $display("SrcB %b" SrcB);
   end
   // TODO: reread statement-_-
 endmodule
